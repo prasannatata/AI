@@ -1,0 +1,166 @@
+Great — I’ll create a structured **JIRA‑style story / technical specification** for **Agentforce Service Assistant**, just like I did earlier for *Agent for Setup*. This will give you a clean, detailed document you can directly use in your POC or tracker.
+
+---
+
+# JIRA Story: Implement Agentforce Service Assistant
+
+### Objective
+
+Configure and deploy the **Agentforce Service Assistant** in Salesforce Service Cloud to assist service reps in resolving cases faster. The Service Assistant generates **AI‑powered service plans** (step‑by‑step resolution guidance) based on case data, knowledge, and organizational policies, using Salesforce Data Cloud and Einstein Generative AI.
+
+---
+
+### High‑Level Use Case
+
+* Service reps spend less time digging through policies, past cases, or knowledge articles.
+* Service Assistant summarizes case details and generates a **structured service plan**.
+* Plans adapt dynamically based on grounding sources (case data, topics, knowledge, quick actions).
+* Service reps execute the plan directly in the Case record page.
+* Managers track service plan performance with **Service Insights dashboards**.
+
+**Benefits**
+
+* Faster and more consistent case resolution.
+* Reduced training effort for new reps.
+* Secure and compliant AI guidance via the Einstein Trust Layer.
+* Better monitoring of service performance and customer satisfaction.
+
+---
+
+### Required Editions & Licensing
+
+* **Supported Editions**: Enterprise, Performance, Unlimited.
+* **Licenses Required**:
+
+  * Agentforce for Service Add‑on
+  * Einstein for Service OR Service Planner Add‑on
+* **Data Cloud**: Must be provisioned and enabled.
+
+---
+
+### Required Permissions
+
+| Persona                              | User License   | Standard Permission Sets                                                                         | Custom Permission Sets (Optional)            |
+| ------------------------------------ | -------------- | ------------------------------------------------------------------------------------------------ | -------------------------------------------- |
+| **Service Assistant Admin**          | Salesforce     | Service Planner Builder, Data Cloud Admin, Agentforce Default Admin                              | Prompt Template Manager, Knowledge User      |
+| **Service Rep**                      | Salesforce     | Service Planner User, Access Agentforce Default Agent                                            | Service Rep Knowledge Access (for Knowledge) |
+| **Service Manager**                  | Salesforce     | Agentforce Default Admin, Service Planner User, Data Cloud Salesforce Connector, Tableau Manager | Prompt Template User                         |
+| **ServicePlanner User (Agent User)** | Einstein Agent | Service Planner Agent User, Agentforce\_Service\_Assistant Permissions                           | Agent Knowledge Access (for Knowledge)       |
+
+---
+
+### Setup Instructions
+
+#### Step 1: Enable Platform Features
+
+* Turn on **Einstein Generative AI**.
+* Turn on **Data Cloud** for case data grounding.
+
+#### Step 2: Turn on Agentforce
+
+* Navigate to **Setup → Agents → + New Agent**.
+* Select **Agentforce Service Assistant**.
+
+#### Step 3: Create Service Assistant Agent
+
+* Auto‑creates **ServicePlanner User** with preconfigured permissions.
+* In Agentforce Builder:
+
+  * Add Topics & Instructions for common case categories.
+  * (Optional) Ground with **Agentforce Data Libraries** for Knowledge.
+
+#### Step 4: Configure Service AI Grounding
+
+* Select **Case** as grounding object.
+* Required fields: **Subject, Description**.
+* Add additional Case fields as needed.
+* Configure **Data Masking** for sensitive fields via Trust Layer.
+
+#### Step 5: Define Eligibility Criteria
+
+* Use the **Check Service Plan Eligibility** flow template or a custom autolaunched flow.
+* Typical conditions:
+
+  * Case Priority = High
+  * Case Origin = Email
+  * Assigned Queue = Tier 2 Support
+* Flow must have **1 string input** and **1 boolean output**.
+
+#### Step 6: Assign Permissions
+
+* Assign Service Planner Builder to admins.
+* Assign Service Planner User to service reps.
+* Ensure Knowledge User enabled if using Knowledge grounding.
+
+#### Step 7: Add Service Assistant Component
+
+* Go to **Lightning App Builder → Case Record Page**.
+* Add **Service Assistant Component** to a new tab (e.g., “Resolution Plan”).
+* Assign as **Org Default** or restrict to specific profiles.
+
+#### Step 8: Extend with Quick Actions (Optional)
+
+* Supported Quick Actions:
+
+  * **Send Email** (draft updates for customers)
+  * **Summarize Case** (requires Einstein Work Summaries beta)
+  * **Close Case**
+* Create instructions for each action in Quick Actions Manager.
+
+#### Step 9: Set Up Prompt Templates (Optional)
+
+* **Draft Service Plan Email** → auto‑draft progress emails.
+* **Summarize Case** → auto‑create case resolution summary.
+
+#### Step 10: Testing
+
+* Use a **sandbox** (not Builder Testing Center).
+* Add sample cases with eligibility criteria.
+* Draft and review service plans:
+
+  * **Summary State** → case overview.
+  * **Plan State** → step‑by‑step actions.
+  * **Redraft State** → update plan with new info.
+
+#### Step 11: Monitor via Service Insights
+
+* Install **Service Planner Data Kit** in Data Cloud.
+* Use **Service Assistant Analytics Dashboard**:
+
+  * Case Trends (with/without plans).
+  * Plan Completion Rates.
+  * Top Topics & Feedback Ratings.
+
+---
+
+### Security & Trust Layer Controls
+
+* **Dynamic Grounding** → merges case & knowledge context.
+* **Prompt Defense** → prevents hallucinations.
+* **Data Masking** → hides sensitive fields.
+* **Toxicity Detection** → flags harmful content.
+* **Audit & Feedback** → logs responses, captures plan ratings.
+
+---
+
+### Deliverables
+
+* Service Assistant agent created and grounded.
+* Eligibility Flow configured.
+* Component added to Case Record Page.
+* Quick Actions & Prompt Templates optional but recommended.
+* Sandbox testing completed.
+* Metrics dashboard active in Service Insights.
+
+---
+
+### Future Enhancements
+
+* Add multilingual support when available.
+* Expand eligibility flow to handle product‑specific cases.
+* Integrate predictive case classification for proactive service planning.
+
+---
+
+⚡ Question for you:
+Do you want me to also create a **diagram (similar to your Claim Insurance ERD)** showing the Service Assistant ecosystem (Case object, Data Cloud, Knowledge Library, Service Insights)? That would make the spec more visual and easy to explain in a demo.

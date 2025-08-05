@@ -3,3 +3,118 @@
 | SDR | Yes | Configured | Testing in progress |
 | XYZ Agent | No | Pending Access | Request access from [Team/Owner] |
 | ABC Agent | Yes | Not Started | Will be included in Story #123, #124 |
+
+
+
+Perfect 👍 — I’ll give you a **full, ready-to-paste JIRA story draft** for **PSE-147: Create OOTB Agentforce Service Agent**, combining:
+
+* High-level use case
+* Setup steps
+* Testing details
+* Next steps
+
+So you can update the **Description** in one go and then use comments for progress tracking.
+
+---
+
+# 📌 JIRA Story: Create OOTB Agentforce Service Agent
+
+### **Objective**
+
+Implement the Out-of-the-Box (OOTB) Agentforce Service Agent to intelligently support customers with routine inquiries and escalate complex cases to live agents when required.
+
+---
+
+### **High-Level Use Case**
+
+The Agentforce Service Agent enables efficient customer service by:
+
+* Answering frequently asked questions using integrated Salesforce Knowledge.
+* Creating and updating support cases automatically when needed.
+* Escalating complex issues to live support agents with full context.
+* Personalizing responses based on account data, case history, and entitlements.
+* Supporting multi-channel interactions (chat, web, messaging) for consistent service.
+
+**Key Benefits**
+
+* ⚡ Reduced response times for common issues.
+* 📉 Lower case backlog by automating repetitive inquiries.
+* 🤝 Improved handoff to live agents with complete conversation history.
+* 📊 Insights into customer needs via Testing Center and analytics.
+
+---
+
+### **Setup & Configuration Steps**
+
+1. **Review Prerequisites**
+
+   * Confirm edition/license: Enterprise, Performance, Unlimited, or Developer.
+   * Verify Agentforce Service Agent add-on is enabled.
+
+2. **Assign Permissions**
+
+   * Add the following permission sets:
+
+     * `Manage Agentforce Service Agents`
+     * `Manage AI Agents`
+   * Ensure the agent user profile has access to Cases, Contacts, and Knowledge objects.
+
+3. **Create the Service Agent**
+
+   * Navigate to **Setup → Agentforce Service Agents → New Agent**.
+   * Define:
+
+     * Agent Name: *Service Agent*
+     * Description: *Supports customers with common inquiries and escalates complex cases.*
+     * Use Case: Customer Support / Case Handling
+     * Channels: Web, Chat, Messaging (as required)
+
+4. **Configure Agent Capabilities**
+
+   * Connect to **Salesforce Knowledge**.
+   * Enable **Case Management** for automatic creation and updates.
+   * Define **Escalation Rules** for complex issues.
+
+---
+
+### **Testing Plan**
+
+**Create a Test CSV for Testing Center**
+
+* Sample columns:
+
+  * *Customer Query | Expected Response | Escalation Required (Yes/No)*
+
+**Testing Steps**
+
+* Upload CSV into Testing Center.
+* Validate accuracy of automated responses.
+* Ensure escalations trigger correctly.
+
+**Manual Testing**
+
+* Run test scenarios in Sandbox.
+* Verify integration with Knowledge and Case Management.
+
+---
+
+### **Next Steps**
+
+* Complete Testing Center validation.
+* Move the agent to Production after successful results.
+* Monitor early adoption metrics and adjust Knowledge articles/rules as needed.
+
+---
+
+### 📌 Notes
+
+* If testing or configuration exceeds **5 story points**, create additional tickets to track effort.
+* Link this story to **PSE-127 (Implement Out-of-the-Box Agents)** for visibility.
+
+---
+
+✅ With this update, your story is now **self-contained, structured, and clear for both technical and business stakeholders**.
+
+---
+
+Do you want me to also give you a **progress comment template** you can reuse weekly in the “Activity” section so the team sees quick updates without opening the Description?

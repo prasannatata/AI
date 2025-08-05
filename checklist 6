@@ -1,0 +1,182 @@
+Perfect — thanks for sharing the full Salesforce doc content. I’ll now create a **detailed JIRA story for the Agent for Setup** in the same structured format as the Employee Agent and Claim Insurance Agent you requested earlier.
+
+---
+
+# JIRA Story: Create OOTB Agentforce – Agent for Setup
+
+### Objective
+
+Implement and configure the Out‑of‑the‑Box (OOTB) Agentforce Agent for Setup to assist org administrators with day‑to‑day Salesforce management tasks, provide guided answers from Salesforce Help, and support secure, policy‑compliant AI usage.
+
+---
+
+### High‑Level Use Case
+
+The Agent for Setup helps Salesforce admins by:
+
+* Answering questions about user permissions, profiles, and configuration.
+* Searching Salesforce Help to provide context‑relevant guidance.
+* Assisting with setup tasks like enabling features or locating org settings.
+* Flagging harmful or inaccurate responses through the Einstein Trust Layer.
+* Reducing time spent on manual navigation in Setup.
+
+**Key Benefits**
+
+* Faster access to Salesforce configuration guidance.
+* Reduced dependency on manual Help searches.
+* Secure, trustworthy AI interactions via Trust Layer services.
+* Continuous improvement through audit logs and feedback.
+
+---
+
+### Required Editions & Permissions
+
+**Editions**
+
+* Enterprise, Performance, Unlimited.
+* Lightning Experience required.
+
+**Permissions**
+
+* To create/manage Agent for Setup:
+
+  * `Customize Application`
+  * OR `Agentforce Default Admin` permission set
+  * AND `View Setup and Configuration`
+
+* To use Agent for Setup:
+
+  * `Access Agentforce Default Agent` permission set
+  * AND `View Setup and Configuration`
+
+---
+
+### Setup Instructions
+
+#### Step 1: Enable Generative AI
+
+1. From Setup, in Quick Find, enter **Agents**.
+2. Select **Agents → + New Agent**.
+3. Choose **Agent for Setup** tile.
+4. Click **Create**.
+
+---
+
+#### Step 2: Configure Agent for Setup
+
+* System messages: Customize greetings, fallback, and escalation messages.
+* Language settings: Supports English (`en_US`, `en_GB`, `en_AU`).
+* Review default topics and actions (preloaded by Salesforce).
+* Keep customizations minimal as Salesforce is improving Agent for Setup and future versions may override custom changes.
+
+---
+
+#### Step 3: Topics & Actions
+
+**Topics**
+
+* Setup Guidance → Locate and explain Salesforce Setup options.
+* Permission Lookup → Help admins verify user permissions.
+* Salesforce Help Lookup → Provide answers from Salesforce Help articles.
+* Escalation → Route queries Salesforce Help couldn’t answer.
+
+**Actions**
+
+* Answer Questions with Knowledge → Search Salesforce Help.
+* Permission Check → Retrieve and display user profile/permission information.
+* Escalation Action → Log task or connect to admin support queue.
+
+**Filters & Variables**
+
+* Use filters to ensure sensitive topics (e.g., permission edits) only run for authenticated admins.
+* Leverage variables like `UserID`, `ProfileID`, `SetupPage` for personalization and security.
+
+---
+
+#### Step 4: Manage User Access
+
+**Via Permission Sets**
+
+1. Setup → Permission Sets → New.
+2. Add label/API name → Save.
+3. Under **Agent Access → Edit**, enable Agent for Setup.
+4. Assign to admin users.
+
+**Via Profiles**
+
+1. Setup → Profiles → Enabled Agent Access → Edit.
+2. Add Agent for Setup → Save.
+
+> When active, the agent is available in Lightning Experience and Salesforce Mobile App. If users have multiple agents, they can select via dropdown.
+
+---
+
+#### Step 5: Trust & Security Configuration
+
+* **Einstein Trust Layer Services** supported:
+
+  * Zero Data Retention Policy
+  * Dynamic Grounding with Secure Data Retrieval (from Salesforce Help)
+  * Prompt Defense & Toxicity Detection
+  * Audit & Feedback Logging (via Data Cloud)
+* Enhanced event logs enabled for troubleshooting.
+
+---
+
+#### Step 6: Testing
+
+* **Agentforce Builder Testing**
+
+  * Simulate admin queries:
+
+    * “How do I check a user’s profile permissions?”
+    * “Where do I enable Omni-Channel?”
+* **Testing Center** (if available):
+
+  * Create CSV with scenarios → run batch validation.
+* Review Enhanced Event Logs to confirm correctness and adherence to instructions.
+
+---
+
+#### Step 7: Deploy to Channels
+
+* **Lightning Experience** (primary).
+* **Salesforce Mobile App**.
+* Agent Surfaces: Tailor responses for desktop vs. mobile contexts.
+* Omni‑Channel Flows (for escalation):
+
+  * Inbound Flow → route queries to Agent for Setup.
+  * Outbound Flow → escalate unresolved requests to support queue.
+
+---
+
+#### Step 8: Activate Agent
+
+* Activate in Setup → makes agent available to all assigned admins.
+* To edit, deactivate → update → reactivate.
+
+---
+
+#### Step 9: Monitor & Improve
+
+* Use **Agentforce Analytics** to track:
+
+  * Query volumes, resolution accuracy, escalation frequency.
+* Build Data Cloud reports to monitor instruction adherence.
+* Regularly review enhanced event logs for improvements.
+
+---
+
+### Deliverables
+
+* Agent for Setup created and activated.
+* Topics: Setup Guidance, Permission Lookup, Salesforce Help Lookup, Escalation.
+* Actions configured with Trust Layer safeguards.
+* Access provisioned via Permission Sets/Profiles.
+* Tested via Builder and Enhanced Event Logs.
+* Deployed in Lightning Experience and Salesforce Mobile.
+* Monitoring enabled with Agentforce Analytics.
+
+---
+
+Would you like me to also create a **side‑by‑side comparison table (Employee Agent vs Service Agent vs Agent for Setup vs Claim Insurance Agent)** for your **PSE‑127 tracker**? That would give stakeholders a clear snapshot of all implemented agents.

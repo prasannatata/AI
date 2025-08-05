@@ -1,0 +1,151 @@
+Certainly! Below is a polished **JIRA story** you can paste into your backlog for building a **custom Claim Insurance Agent** (ChatGPT‑style, not OOTB). This version mirrors your preferred format while incorporating best practices and industry references.
+
+---
+
+# 📌 JIRA Story: Create Custom Claim Insurance Agent (ChatGPT-based)
+
+### **Objective**
+
+Develop and configure a custom Claim Insurance Agent powered by generative AI to support claim inquiries—such as status checks, denial explanations, reimbursement estimates—and provide escalation when human intervention is needed. This agent is not OOTB; it's built using ChatGPT-like customization tailored to the organization.
+
+---
+
+### **High-Level Use Case**
+
+The Claim Insurance Agent provides:
+
+* Real-time status updates (Claim ID, provider, billed/paid amount)
+* User-friendly explanations for denial codes (CARC/RAC)
+* Timeline estimates for reimbursements
+* Escalation options to live support agents
+* Omni-channel availability (e.g. web portal, mobile, internal tools)
+
+**Benefits:**
+
+* Faster responses for members
+* Reduced support workload
+* Improved clarity and trust in claim outcomes
+* Automated escalation when necessary
+
+---
+
+### **Required Permissions & Data Access**
+
+* Access to a ChatGPT-based platform with your organization’s claim data securely integrated (e.g., via RAG, API connectors)
+* CRM access to custom Claim object and Member data
+* Escalation via omnichannel service desk or HR queue integration
+
+---
+
+### **Setup Instructions**
+
+#### Step 1: Build the Custom Agent
+
+1. Use your ChatGPT or Custom GPT platform (e.g. OpenAI or CustomGPT.ai)
+2. Feed in claim domain data: claim schema, denial code mappings, FAQs, denial logic, expected workflows
+3. Define system behavior and personality (tone, policy language, fallback prompts)
+4. Fine-tune or prompt-engineer the model to handle the four core use cases
+
+   * Claim status lookup
+   * Denial explanation
+   * Reimbursement estimate
+   * Escalation option
+
+---
+
+#### Step 2: Configure Topics & Actions
+
+**Core Capabilities**
+
+* `Claim Status Lookup`: Query the Claim object and provide structured responses
+* `Denial Explanation`: Interpret denial codes using mapping datasets
+* `Reimbursement Estimate`: Use business rules or historical data to forecast timelines
+* `Escalation`: If the claim query is unresolved or marked as complex, prompt user to escalate
+
+**Security Controls**
+
+* Require user authentication before retrieving personal claim data
+* Use session variables like `ClaimID`, `Email`, `MemberID` to secure responses
+
+---
+
+#### Step 3: Grant User Access
+
+**Via Platform Settings**
+
+* Assign roles or user groups (e.g. “Support Reps,” “Member Portal”) who can access the agent
+
+**In Salesforce or CRM**
+
+* Configure integration so authorized users can call the agent in the portal or internal cases
+
+---
+
+#### Step 4: Test the Agent
+
+**Interactive Testing**
+
+* Simulate member queries in ChatGPT Builder or sandbox environment
+* Check conversation flows, logic branching, and security constraints
+
+**Batch Testing**
+
+* Create CSV sample scenarios:
+
+  ```
+  "Check status CLM-00123","Show claim status: Paid","No"
+  "Why was CLM-00456 denied?","Explain CARC code CO-50","No"
+  "When will I get reimbursed for CLM-00789?","Estimate 10‑14 days","No"
+  "I want to dispute this denial","Escalate to support","Yes"
+  ```
+* Run batch test to verify accuracy, consistency, and escalation triggers
+
+*Industry practice: Tools like CustomGPT.ai and other platforms report up to 93% resolution rates for similar use cases* ([chadgpt.com][1], [connectmyinsurance.com][2], [customgpt.ai][3])
+
+---
+
+#### Step 5: Deploy to Channels
+
+* Integrate agent into customer/member portal UI
+* Configure access on mobile app or internal support dashboards
+* Optionally embed agent in Salesforce Console via API
+
+**Conversation Flow Routing**
+
+* Map incoming claims queries to the agent
+* Escalate to live support via omnichannel or CRM ticket creation
+
+---
+
+#### Step 6: Activate Agent & Monitor
+
+* Launch agent in production once testing is validated
+* Monitor key metrics: query volume, resolution rate, escalation frequency
+* Enable audit logs for compliance review
+
+---
+
+#### Step 7: Continuous Improvement
+
+* Analyze analytics and chatbot logs to identify gaps (e.g. misunderstood refusal codes)
+* Update training content, denial mappings, response prompts, or escalation handling
+* Iterate and deploy updates regularly
+
+---
+
+### **Deliverables**
+
+* Custom Claim Insurance Agent trained on claim and member data
+* Configured topics and logic flows: status lookup, denial explanation, estimates, escalation
+* Access provisioning for authorized users
+* Completed test scenarios with pass/fail results
+* Deployed in member portal and optionally internal Salesforce UI
+* Analytics dashboard integrated for ongoing monitoring
+
+---
+
+Would you like me to build a **CSV template and test scenarios** or provide a **comparison table** showing this custom agent side-by-side with your OOTB Service and Employee agents in your PSE-127 tracker?
+
+[1]: https://chadgpt.com/chadgpt-ai-for-insurance-agents/?utm_source=chatgpt.com "ChadGPT AI for Insurance Agents"
+[2]: https://www.connectmyinsurance.com/blog/how-to-use-chatgpt-in-your-insurance-agency/?utm_source=chatgpt.com "How to use ChatGPT in Your Insurance Agency"
+[3]: https://customgpt.ai/industry/insurance/?utm_source=chatgpt.com "Master Insurance Support With AI Agents That Never Miss ..."

@@ -1,0 +1,172 @@
+Got it — here’s the **full updated Employee Agent JIRA story** with the emojis removed for a clean, professional format you can paste directly into your backlog.
+
+---
+
+# JIRA Story: Create OOTB Agentforce Employee Agent
+
+### Objective
+
+Implement and configure the Out-of-the-Box (OOTB) Agentforce Employee Agent (AEA) to provide internal support for HR and IT inquiries, automate case management, and improve employee satisfaction.
+
+---
+
+### High-Level Use Case
+
+The Employee Agent empowers employees to quickly resolve common HR and IT requests while escalating complex issues to the right teams.
+
+* HR Support: PTO, payroll, benefits, leave policies.
+* IT Helpdesk: Password resets, VPN/login troubleshooting, access requests.
+* Case Automation: Create and update HR/IT cases automatically.
+* Escalation: Route sensitive or unresolved requests to live support agents.
+* Omni-Channel: Available in Lightning Experience, Salesforce Mobile App, and optionally Slack.
+
+**Key Benefits**
+
+* Faster resolution for employees.
+* Reduced HR/IT backlog.
+* Improved employee experience with self-service.
+* Better visibility into trends through Agentforce Analytics.
+
+---
+
+### Required Editions & Permissions
+
+* Editions: Enterprise, Performance, Unlimited, Developer.
+* Licenses: Agentforce Employee Agent add-on (or included Einstein license).
+* Permissions (choose one path):
+
+  * Manage AI Agents and Manage Agentforce Employee Agents
+  * OR Customize Application
+
+---
+
+### Setup Instructions
+
+#### Step 1: Create the Employee Agent
+
+1. Navigate to Setup → Agentforce Employee Agents → New Agent.
+2. Select Create from a Template.
+3. Review the default topics and actions; remove any not relevant.
+4. Define agent settings:
+
+   * System messages (greetings, fallbacks, escalation messages).
+   * Language settings.
+5. Select a data source for Knowledge grounding:
+
+   * Use Salesforce Knowledge OR
+   * Create a Data Library (limit agent responses to specific articles/files).
+6. Click Create.
+
+---
+
+#### Step 2: Configure Topics & Actions
+
+**Topics** define what the agent can do; **Actions** are the tools used.
+
+* HR FAQs: Answer questions from Knowledge (benefits, PTO, payroll).
+* IT Support: Troubleshooting, password resets, VPN help.
+* Case Creation: Open HR or IT cases.
+* Escalation: Route unresolved or sensitive issues to human agents.
+
+**Actions** include:
+
+* Answer Questions with Knowledge
+* Create/Update Case
+* Escalation via Omni-Channel Flow
+* Custom Actions (for organization-specific processes such as equipment requests or system access).
+
+**Filters & Variables**
+
+* Create filters so certain topics/actions are only available under conditions (for example, authenticated user).
+* Use variables (for example, EmployeeID, Department) for personalization and security.
+
+---
+
+#### Step 3: Assign User Access
+
+**Option 1: Permission Sets**
+
+1. Go to Setup → Permission Sets → New.
+2. Add label and API name → Save.
+3. Under Agent Access → Edit, enable the Employee Agent.
+4. Assign the permission set to users via Manage Assignments → Add Assignments.
+
+**Option 2: Profiles**
+
+1. Go to Setup → Profiles.
+2. Select a profile → Enabled Agent Access → Edit.
+3. Enable the Employee Agent → Save.
+
+When active, the Employee Agent appears in the Agentforce panel (Lightning Experience and Salesforce Mobile). If a user has multiple agents, they can select which one to use from a dropdown.
+
+---
+
+#### Step 4: Test the Agent
+
+**Using Agentforce Builder**
+
+* Simulate real conversations.
+* Validate flows, actions, and escalation behavior.
+
+**Using Agentforce Testing Center**
+
+* Create a CSV (columns: Employee Query | Expected Response | Escalation Required).
+* Upload to Testing Center → Run tests.
+* Review batch results for accuracy and escalation triggers.
+* Enable Enhanced Event Logs to capture full conversation history for 7 days.
+
+---
+
+#### Step 5: Deploy to Channels
+
+* Lightning Experience (default).
+* Salesforce Mobile App.
+* Slack (optional) → Connect via Agentforce Slack integration.
+* Configure Omni-Channel Flows:
+
+  * Inbound Flow routes employee queries to the Employee Agent.
+  * Outbound Flow escalates to HR/IT queues or live agents.
+
+**Agent Surfaces**
+
+* Customize responses per channel (for example, structured format in Mobile, conversational tone in Slack).
+
+---
+
+#### Step 6: Activate the Agent
+
+* Activate when ready → makes the agent available in all assigned channels.
+* To update Topics/Actions later, deactivate, edit, then reactivate.
+
+---
+
+#### Step 7: Monitor & Improve
+
+* Use Agentforce Analytics (via Data Cloud) for insights:
+
+  * Accuracy, usage, escalations, ROI.
+* Build Data Cloud reports to track adherence to instructions.
+* Continuously improve Knowledge and filters based on feedback.
+
+---
+
+#### Step 8: Extend the Agent
+
+* Call the Employee Agent from Flows or Apex (for example, onboarding automation).
+* Use invocable actions for event-driven or background tasks.
+* Expand to additional internal tools/channels as needed.
+
+---
+
+### Deliverables
+
+* Employee Agent created from a template.
+* Topics & Actions configured (HR, IT, Case Creation, Escalation).
+* Access granted via Permission Sets/Profiles.
+* Tested in Builder + Testing Center (CSV validated).
+* Deployed to Lightning Experience, Mobile, and Slack (if required).
+* Activated and monitored with Agentforce Analytics.
+
+---
+
+Would you like me to now build a **side-by-side comparison of Service Agent vs Employee Agent** for your PSE‑127 tracker so leadership can clearly see the scope difference?

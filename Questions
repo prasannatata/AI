@@ -1,0 +1,71 @@
+What are your top priorities for moving to Salesforce Life Sciences Cloud (e.g., sales growth, clinical trial efficiency, regulatory compliance, patient engagement)?
+
+Which processes or pain points in your current systems are driving this switch?
+
+How do you measure success for initiatives like sales pipeline management or clinical trial recruitment?
+
+Are you planning to unify pharma, med‑tech, and clinical trial operations in Salesforce, or keep them on separate tracks?
+
+🔹 Sales & Marketing (Pipelines / CRM)
+What does your current sales pipeline look like (stages, conversion metrics, typical timelines)?
+
+Do you need to manage both B2B (HCP / site outreach) and B2C (patient engagement) sales flows?
+
+How do you currently segment and target healthcare providers, trial sites, or customers?
+
+Are you looking for AI‑driven insights (e.g., which HCPs to target, predictive trial enrollment forecasts)?
+
+🔹 Clinical Trial Management
+How are you currently tracking clinical trials (protocols, sites, participants)?
+
+Do you need to integrate Site Intelligence, Pre‑Study Visits (PSVs), or Shared Investigator Platform (SIP) into Salesforce?
+
+How do you currently manage eligibility, referrals, and enrollment?
+
+What reports or dashboards would help you better track study progress and patient recruitment?
+
+Do you need regulatory‑compliant audit trails and consent tracking in Salesforce?
+
+🔹 Case Management & Routing
+What types of cases do you typically handle (e.g., trial inquiries, medical device support, adverse events, product complaints)?
+
+How are cases currently routed — by product line, therapeutic area, geography, or priority?
+
+Do you want automated routing (e.g., by skill, location, severity)?
+
+What Service Level Agreements (SLAs) do you need to enforce?
+
+Will your team need Omni‑Channel support (chat, phone, email, portals)?
+
+🔹 Data & Visualization
+What data sources do you need Salesforce to integrate with (CTMS, EDC, safety systems, ERP, Outlook, etc.)?
+
+Which KPIs or metrics do you want visualized (e.g., enrollment rate, pipeline by therapeutic area, case closure time)?
+
+Are you looking for real‑time dashboards or static executive reports?
+
+Do you need predictive analytics (e.g., forecasting enrollment drop‑offs, HCP engagement scores)?
+
+🔹 Compliance & Security
+What compliance standards must your solution meet (21 CFR Part 11, HIPAA, GDPR, etc.)?
+
+How are you currently managing patient consent and data privacy, and how should Salesforce support this?
+
+Do you require role‑based access controls or additional audit logging?
+
+🔹 Change Management & Adoption
+Who are the main user groups (e.g., sales reps, trial coordinators, call center, medical affairs)?
+
+Do you plan a phased rollout or a big‑bang go‑live?
+
+What training and adoption support will your teams need?
+
+Are there internal champions already identified for Salesforce adoption?
+
+🔹 Future Roadmap
+Do you plan to expand later into Marketing Cloud, Data Cloud, or Agentforce AI assistants?
+
+How important is scalability for global trial operations or multi‑country sales teams?
+
+Are you open to a phase‑2 AI/automation strategy (predictive scheduling, automated trial matching, proactive case resolution)?
+

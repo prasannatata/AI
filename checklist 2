@@ -1,0 +1,151 @@
+Perfect — let’s extend your JIRA story with **detailed instructions for Topics and Actions** since that’s a big part of setting up the **Agentforce Service Agent**. This will make your story end‑to‑end complete.
+
+Here’s the **full updated version** you can paste into the **Description** of PSE‑147.
+
+---
+
+# 📌 JIRA Story: Create OOTB Agentforce Service Agent
+
+### **Objective**
+
+Implement the Out‑of‑the‑Box (OOTB) Agentforce Service Agent to support customers with routine inquiries, escalate complex cases, and provide personalized service across multiple channels.
+
+---
+
+### **High-Level Use Case**
+
+The Agentforce Service Agent is designed to:
+
+* Provide fast answers to common customer questions via Salesforce Knowledge.
+* Automatically create and update Cases.
+* Escalate complex inquiries to live agents with full context.
+* Support customers on multiple inbound channels (Web, Chat, Messaging).
+* Reduce case backlog and improve customer satisfaction.
+
+---
+
+### **Setup Instructions**
+
+#### ✅ Step 1: Confirm Prerequisites
+
+* Salesforce edition: Enterprise, Performance, Unlimited, or Developer.
+* Add‑on enabled: **Einstein for Service**, **Einstein Platform**, or **Agentforce Service Agent**.
+* Assign required permission sets:
+
+  * `Manage Agentforce Service Agents`
+  * `Manage AI Agents`
+* Ensure Agent User has read/write access to: Cases, Contacts, Knowledge Articles, Omni‑Channel.
+
+---
+
+#### ✅ Step 2: Create the Service Agent
+
+1. Navigate to **Setup → Agentforce Service Agents → New Agent**.
+2. Enter details:
+
+   * **Name:** *Service Agent*
+   * **Description:** *Handles common inquiries and escalates complex cases.*
+   * **Agent User:** Select a dedicated profile with the above permissions.
+   * Enable **Enhanced Logging** for compliance.
+3. Save the agent record.
+
+---
+
+#### ✅ Step 3: Configure Inbound Channels
+
+* Go to **Setup → Service Channels**.
+* Add inbound communication methods:
+
+  * **Web Chat**
+  * **Messaging** (SMS, WhatsApp, Facebook Messenger, etc.)
+  * **Service Console** for internal routing
+* Map routing to the Service Agent.
+
+🔗 Ref: [Inbound Channels](https://help.salesforce.com/s/articleView?id=ai.service_agent_inbound_channels.htm&type=5)
+
+---
+
+#### ✅ Step 4: Configure Topics & Actions
+
+**Topics** define what the agent can talk about.
+**Actions** define what the agent can *do*.
+
+1. Navigate to the Service Agent’s record → **Topics & Actions**.
+
+2. Add or customize topics:
+
+   * **General FAQ:** Use Knowledge Articles to answer common support questions.
+   * **Case Creation:** Automatically open new support cases.
+   * **Escalation:** Escalate to a live agent when the issue cannot be resolved.
+   * **Order/Billing Inquiries:** (optional, if relevant to your org).
+
+3. Configure actions within topics:
+
+   * **Knowledge Retrieval:** Link to Salesforce Knowledge articles.
+   * **Case Update Action:** Update or append information to an existing Case.
+   * **Escalation Action:** Create escalation tasks or Omni‑Channel handoff.
+   * **Custom Actions:** Create Flows or Prompt Templates for org‑specific tasks (e.g., “Check Warranty,” “Reset Password”).
+
+---
+
+#### ✅ Step 5: Prepare Testing
+
+**Create CSV for Testing Center**
+
+* Columns:
+
+  * *Customer Query | Expected Response | Escalation Required (Yes/No)*
+* Example:
+
+  ```
+  "How do I reset my password?","Provide password reset steps","No"
+  "I was double charged for my order","Escalate to live agent","Yes"
+  ```
+
+**Run Tests**
+
+1. Navigate to **Setup → Agentforce Testing Center**.
+2. Upload the CSV test file.
+3. Validate:
+
+   * Responses match expected results.
+   * Escalations trigger correctly.
+
+**Review Results**
+
+* Use Testing Center results page to identify gaps.
+* Optimize topics or actions based on accuracy.
+
+🔗 Ref:
+
+* [Create Test CSV](https://help.salesforce.com/s/articleView?id=ai.agent_testing_center_create.htm&type=5)
+* [Use Results](https://help.salesforce.com/s/articleView?id=ai.agent_testing_center_use_results.htm&type=5)
+* [Considerations](https://help.salesforce.com/s/articleView?id=ai.agent_testing_center_considerations.htm&type=5)
+
+---
+
+#### ✅ Step 6: Deploy & Monitor
+
+* After successful testing:
+
+  * Promote the Service Agent from Sandbox → Production.
+  * Monitor via:
+
+    * **Enhanced Logging** (for audit trail)
+    * **Performance Dashboards** (accuracy, escalations, response time).
+* Iterate improvements by refining Topics, updating Knowledge, and adjusting escalation rules.
+
+---
+
+### 📌 Deliverables
+
+* High‑level use case documented.
+* Service Agent created and configured.
+* Topics & Actions implemented: FAQ, Case Creation, Escalation.
+* Test CSV created and validated in Testing Center.
+* Deployment plan with monitoring in Production.
+
+---
+
+⚡ If you’d like, I can also give you a **ready‑made table** for your JIRA Description summarizing **Topics + Actions** so stakeholders can quickly see coverage.
+Do you want me to add that table?

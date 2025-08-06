@@ -1,0 +1,120 @@
+Thanks for sharing all of these images. Based on the documents, it looks like you’re preparing for a Salesforce Life Sciences Cloud discovery and solution engineering engagement with Vericel. I’ll summarize the key understandings from the notes and then propose the types of discovery questions and setup you’d typically conduct as a Solution Engineer.
+
+⸻
+
+🔑 Key Understandings from the Documents
+	1.	Products & Teams
+	•	MACI (Matrix-Induced Autologous Chondrocyte Implantation): cartilage repair therapy.
+	•	Epicel: permanent skin replacement for burn patients.
+	•	NexoBrid: enzymatic eschar removal in burn care.
+	•	Burn Care and MACI teams use different tools and processes, with overlaps and redundancies.
+	•	Sales teams rely on CRM (Dynamics), Claritas, and MoveMedical.
+	2.	Systems in Use
+	•	Dynamics CRM for both Burn Care and MACI.
+	•	Claritas for MACI case management (heavily coded, inflexible, outsourced).
+	•	AcuityMD: surgeon/practice data.
+	•	MoveMedical: inventory tracking & field usage.
+	•	ValueTrak: provides sales info, uploaded to CRM.
+	•	Quick Base: for lab & patient case tracking.
+	3.	Pain Points
+	•	Disconnected systems → data duplication and manual re-entry (Dynamics ↔ Claritas ↔ Quick Base).
+	•	Poor reporting & analytics; multiple sources hard to unify.
+	•	Reliance on third-party tools (e.g., Prospectus for Claritas).
+	•	Biopsy & patient enrollment data flow is fragmented and manual.
+	•	No consolidated commission tracking; sales ops visibility limited.
+	•	Need for ERP integration (Oracle Fusion ongoing).
+	4.	Opportunities for Salesforce
+	•	Replace or integrate with Claritas/Dynamics for a single patient & sales view.
+	•	Improve reporting and data accessibility (Power BI not sufficient).
+	•	Automate data flows (biopsy → CRM → Claritas).
+	•	Centralize case & patient management in Life Sciences Cloud.
+	•	Early interest from stakeholders (Ashley Yang, Sterling Martin).
+	•	Budget cycle in October and decision goal by January.
+
+⸻
+
+⚙️ Discovery Setup as a Solution Engineer
+
+The discovery should focus on aligning Salesforce Life Sciences Cloud with Vericel’s workflows, surfacing technical and business challenges, and mapping to platform capabilities.
+
+1. Stakeholder Alignment
+	•	Who to include: Sales Ops, Commercial Excellence, IT/Infrastructure, Patient Services (MCC), Finance (for commissions), Marketing (for campaigns).
+	•	Goal: Create a unified view of pain points, goals, and desired outcomes.
+
+2. Process Mapping Workshops
+	•	Burn Care Sales Workflow
+	•	Lead/account management in Dynamics.
+	•	Biopsy → case entry → CRM updates.
+	•	Order placement and follow-up.
+	•	MACI Sales & Case Workflow
+	•	Biopsy info from external system.
+	•	Data entered into CRM, then Claritas, back to CRM.
+	•	Inventory & scheduling coordination (MoveMedical).
+	•	Reporting & Analytics
+	•	What reports are used today?
+	•	Who consumes them (sales leaders, execs, field reps)?
+	•	Where are the data gaps?
+
+3. Data & Systems Architecture Review
+	•	Current data sources: Dynamics, Claritas, AcuityMD, Quick Base, ValueTrak.
+	•	Frequency & method of data transfer (manual, automated, batch, API).
+	•	Identify key integration candidates (via Mulesoft or Salesforce APIs).
+	•	Clarify current ERP Oracle Fusion implementation status.
+
+4. Technical Fit Discovery
+	•	Assess feasibility of moving Claritas workflows into Salesforce.
+	•	Discuss user experience expectations (mobile field reps, offline support).
+	•	Explore commission tracking integration with Salesforce.
+	•	Identify compliance requirements (HIPAA, FDA, etc.).
+
+⸻
+
+🎯 Discovery Questions You Could Ask
+
+Here’s a structured set of questions:
+
+Business & Strategy
+	1.	What are the top 3 goals for the commercial team in the next 12 months?
+	2.	How do you measure success for sales and patient services today?
+	3.	What is the impact of your current system inefficiencies (missed cases, slow follow-ups, delayed reporting)?
+
+Sales & Case Management
+	4.	Can you walk us through the end-to-end process for a MACI case, from biopsy to implant?
+	5.	How do Burn Care sales reps manage leads, accounts, and follow-ups today?
+	6.	What challenges do you face when coordinating between Sales and the MCC team?
+
+Systems & Data
+	7.	Which systems are most critical for your daily operations (CRM, Claritas, Quick Base, AcuityMD)?
+	8.	Where do you see the most manual re-entry or duplication of data?
+	9.	What are the biggest pain points with Dynamics and Claritas today?
+
+Reporting & Analytics
+	10.	Who are the main consumers of reports (field reps, sales managers, execs)?
+	11.	What are the most important reports or dashboards you need daily/weekly?
+	12.	Where do you feel you lack visibility today?
+
+Integration & Change Management
+	13.	How are you planning to integrate with your ongoing ERP Oracle Fusion project?
+	14.	What internal IT resources do you have for supporting system integrations?
+	15.	Are you open to replacing Claritas entirely, or would you prefer Salesforce to integrate with it?
+
+Commissions & Incentives
+	16.	How are sales commissions tracked today?
+	17.	What issues arise from the current manual process?
+	18.	Would automated commission tracking improve sales rep adoption of CRM?
+
+Decision Process
+	19.	What is the budget approval cycle we need to align with (October/January)?
+	20.	Who are the final decision-makers for a CRM or Life Sciences Cloud purchase?
+	21.	What risks or concerns could block adoption of a new platform?
+
+⸻
+
+✅ Next Steps for You as a Solution Engineer
+	•	Propose discovery workshops (1–2 hours each) for Sales, IT, MCC, and Finance.
+	•	Deliver a high-level architecture diagram showing how Salesforce Life Sciences Cloud could centralize Dynamics, Claritas, Quick Base, and ERP data.
+	•	Identify a pilot use case (e.g., MACI biopsy-to-implant tracking) to demonstrate value before October.
+
+⸻
+
+Would you like me to draft a sample discovery agenda/workshop plan (with sessions, goals, and expected outcomes) that you could actually use in these meetings?

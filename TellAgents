@@ -1,0 +1,71 @@
+Perfect — here’s a refined, **clear and structured version** of your script that’s **on-point but slightly more descriptive**, so it reads well even without someone speaking it. This version is ready to show in slides or present live with minimal explanation:
+
+---
+
+## Payer GenAI Agents – What We’ve Built and What’s Next
+
+---
+
+### Agent 1: Claims Inquiry Assistant
+
+**What It Does Today**
+
+* Members can check the real-time status of their medical claims
+* Displays billed amount, paid amount, denial reason (if any), and provider info
+* Explains CARC/RARC denial codes in plain English
+* Offers reimbursement estimate based on member responsibility
+* Includes optional email verification before sharing PHI
+* If unresolved, can trigger support escalation (task or live agent handoff)
+
+**Where We Can Extend It**
+
+* Predict claim denials before submission based on rules and patterns
+* Auto-fill appeals using member data, plan language, and denial codes
+* Highlight provider billing errors or duplicate claims across members
+* Add alerts for underpaid or out-of-network claims needing review
+* Summarize complex claim histories for agents to speed up handling
+
+---
+
+### Agent 2: Eligibility & Benefits Checker
+
+**What It Does Today**
+
+* Members can ask if a service is covered (e.g., MRI, physical therapy)
+* Returns copay, coinsurance, deductible details for the specific benefit
+* Identifies whether prior authorization is required
+* Checks visit limits, benefit caps, and exclusions
+* Email verification can be used to personalize the response
+
+**Where We Can Extend It**
+
+* Let users check if a provider is in-network for their plan
+* Add prior auth request support (draft forms or route to portal)
+* Track used vs. remaining benefits (e.g., “3 visits left this year”)
+* Compare benefits across multiple plans during open enrollment
+* Answer drug coverage or formulary questions using plan-specific rules
+
+---
+
+### How These Two Agents Can Work Together
+
+* After checking eligibility, link directly to relevant claims for that service
+* If a claim is denied, backtrack to benefits or auth gaps
+* Show trends: high denial rates for uncovered services can drive plan education
+* Add handoff logic: “This wasn’t covered — would you like to appeal?”
+
+---
+
+### Forward-Looking Use Cases – Solving Real Pain Points
+
+| Use Case                       | What It Solves                                  | Value to Payer Ops                              |
+| ------------------------------ | ----------------------------------------------- | ----------------------------------------------- |
+| Pre-Adjudication Denial Filter | Flags likely denials before claim is submitted  | Lowers denial rates and rework                  |
+| Auto-Generate Appeals          | Drafts appeal forms with supporting language    | Reduces back-office burden and errors           |
+| Prior Auth Decision Assistant  | Approves or routes auth requests intelligently  | Speeds up access to care                        |
+| High-Cost Member Predictor     | Identifies rising risk based on claims patterns | Enables proactive intervention and cost control |
+| Compliance Rule Explainer      | Simplifies new CMS/state rule rollouts          | Reduces audit risk and improves training        |
+
+---
+
+Let me know if you'd like to convert this into a polished slide deck or show specific flows next to each feature.

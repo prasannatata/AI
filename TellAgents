@@ -89,6 +89,71 @@ Here’s a full list of **high-impact, AI-powered payer use cases** in your pref
 • Show member cost before approval
 **Impact**: Reduces waste, supports value-based care, prevents billing shocks
 
+
+
+
+Great question — let’s break this down. You already listed what your **Claims Inquiry Assistant** does today. To identify **where extensions are possible**, you can look at it from 3 **natural pivot points** in the current flow:
+
+---
+
+### 🔹 1. **Post-Claim Submission — Before Denial Happens**
+
+**Where in the current flow**:
+➡ *Before the member sees the status or denial reason*
+
+**Extensions you can add here**:
+
+* **Claim Denial Prediction**: Based on past claims and plan rules
+* **Auto Alerts for High Denial Risk**: Notify before denial happens
+* **Pre-submission Checks** (for provider use case)
+
+📌 *Why this matters*: You're shifting from reactive to proactive. Members and providers get ahead of denials, improving outcomes.
+
+---
+
+### 🔹 2. **After a Denial — Right When Reason is Shown**
+
+**Where in the current flow**:
+➡ *After denial reason (CARC/RARC) is explained*
+
+**Extensions you can add here**:
+
+* **Auto-Fill Appeal Letter**: Use denial reason + plan info + member data
+* **Appeal Status Tracking**: Let the member track what’s happening
+* **Escalation Smart Routing**: Route based on denial type/urgency
+
+📌 *Why this matters*: You’re helping members take the *next step*, not just explaining the issue.
+
+---
+
+### 🔹 3. **Across Multiple Claims — Pattern Recognition**
+
+**Where in the current flow**:
+➡ *When members ask about multiple claims, or support teams are involved*
+
+**Extensions you can add here**:
+
+* **Summarize Claim History**: One view for support agents
+* **Flag Underpayments or Billing Errors**: Based on peer/member trends
+* **Detect Duplicate Claims from Providers**
+
+📌 *Why this matters*: This helps with **internal audit**, faster issue resolution, and proactive recovery.
+
+---
+
+### ✳ Summary Table
+
+| **Trigger Point**            | **Possible Extension**                    | **Who Benefits**     |
+| ---------------------------- | ----------------------------------------- | -------------------- |
+| Before status shown          | Predict denials, alert before submission  | Member, Provider     |
+| After denial reason shown    | Auto-fill appeals, escalate smarter       | Member, Support Team |
+| When viewing multiple claims | Summarize, detect errors, flag duplicates | Support, Audit Teams |
+
+---
+
+Let me know if you'd like this turned into a visual slide or Confluence block.
+
+
 ---
 
 ### ✅ 2. Internal Support Assistant (for Reps & Care Teams)

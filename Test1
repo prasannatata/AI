@@ -1,0 +1,21 @@
+Here’s a combined and reworded status update for last week, blending the details from both screenshots and also aligning with the kind of updates we’ve discussed in our past chats:
+
+⸻
+
+Progress
+	•	Created and configured a custom Contract Subscription object with related fields, along with a Flow to fetch and display subscription data in the agent interface.
+	•	Added dynamic logic to suggest plan upgrades based on the user’s current subscription, along with usage statistics and review metrics to help agents monitor limits.
+	•	Enhanced the agent interface by integrating upsell functionality, contract subscription details, and the Messaging Session object directly into the Case Record Page for quicker context.
+	•	Cleaned up and standardized the Case Record Page layout to highlight the most relevant case and messaging details.
+	•	Finalized and uploaded documentation for all POCs, organizing files in Confluence for easy reference and future reuse.
+	•	Curated and added a learnings document in Confluence summarizing insights and improvements from all previous POCs.
+
+Plans
+	•	Begin LSC (Life Sciences Cloud) learning sessions using available training videos.
+	•	Attend an upcoming Salesforce event to explore insights and expand the network.
+	•	Prepare for the DaVita POC, including environment readiness and test scenarios.
+	•	Modify the agent interface to exclude Waystar-specific details so an internal demo can be recorded and showcased.
+
+⸻
+
+If you’d like, I can also make a shorter, more punchy version so it feels quick to read in a meeting update. That way, you’ll have both a detailed and a concise one ready.

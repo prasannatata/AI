@@ -1,12 +1,45 @@
-SELECT QualifiedApiName, EntityDefinition.QualifiedApiName, Label
-FROM FieldDefinition
-WHERE Label LIKE '%YourLabel%'
+Got it — instead of breaking into multiple Jira stories, we can make **one consolidated story** for "Claim Inquiry Assistant Enhancements" that covers all the possible improvements from your Excel list.
 
+Here’s a draft you can paste into the Jira **Description**:
 
+---
 
-SELECT EntityDefinition.QualifiedApiName, QualifiedApiName, Label
-FROM FieldDefinition
-WHERE EntityDefinitionId IN (
-    SELECT Id FROM EntityDefinition
-)
-AND Label LIKE '%Case Reference ID%'
+**Story Title:** Claim Inquiry Assistant Enhancements
+
+**Description:**
+Enhance the existing Claim Inquiry Assistant to improve predictive capabilities, provide proactive alerts, streamline appeal processes, and deliver advanced claim insights across multiple scenarios.
+
+**Enhancement Scope:**
+
+1. **Before Claim Status/Denial**
+
+   * Claim denial prediction based on past claims and plan rules.
+   * Auto alerts for high denial risk to notify members before denial happens.
+   * Pre-submission checks for provider use cases.
+
+2. **After a Denial**
+
+   * Auto-fill appeal letters using denial reason, plan info, and member data.
+   * Appeal status tracking to keep members informed.
+   * Escalation smart routing based on denial type/urgency.
+
+3. **Across Multiple Claims**
+
+   * Summarize claim history for trend analysis.
+   * Flag underpayments or billing errors for review.
+   * Detect duplicate claims from providers.
+
+**Acceptance Criteria:**
+
+* Predictions and alerts are visible to the member before claim submission.
+* Appeal letter auto-fill pulls accurate claim and plan data.
+* Appeal status is updated in near real-time and accessible via the assistant.
+* Escalations are routed to the correct handling team automatically.
+* Claim history view provides an aggregated summary with trends and flags.
+
+**Linked Work Items:** PSE-124 (Create Payer Agent)
+
+---
+
+If you want, I can also do the same for **Eligibility & Benefits Checker Enhancements** so it’s in a single Jira story format like this one. That way both agents have clean, ready-to-use Jira descriptions. Would you like me to do that?
+

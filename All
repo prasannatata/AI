@@ -1,0 +1,3 @@
+SELECT QualifiedApiName, EntityDefinition.QualifiedApiName, Label
+FROM FieldDefinition
+WHERE Label LIKE '%YourLabel%'

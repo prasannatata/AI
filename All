@@ -1,3 +1,12 @@
 SELECT QualifiedApiName, EntityDefinition.QualifiedApiName, Label
 FROM FieldDefinition
 WHERE Label LIKE '%YourLabel%'
+
+
+
+SELECT EntityDefinition.QualifiedApiName, QualifiedApiName, Label
+FROM FieldDefinition
+WHERE EntityDefinitionId IN (
+    SELECT Id FROM EntityDefinition
+)
+AND Label LIKE '%Case Reference ID%'

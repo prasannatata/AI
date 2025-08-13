@@ -1,0 +1,251 @@
+Perfect—here’s a clean, “do-this-in-order” **implementation guide** for the **Claims Inquiry (Insurance) Agent**. It’s split into: **What’s Done** and **What’s Next** with step-by-step tasks and acceptance criteria.
+
+---
+
+# Claims Inquiry Agent — Implementation Guide
+
+## A) Scope (one line)
+
+Self-service claims help for members: status, denial explanation, reimbursement ETA, and escalation—via Experience Cloud + Agentforce.
+
+---
+
+## B) What’s Done (current state)
+
+### 1) Data model & relationships
+
+* **Objects**: `Claim__c`, `Member__c`, `Member_Inquiry__c`, `Denial_Code__c`, `Case`, `Task`.
+* **Key relationships**: `Claim__c.Member__c (Lookup)`; `Member_Inquiry__c.Member__c`.
+* **Fields used** (present and surfaced by flows): Claim Number, DOS, Provider, Billed, Paid, Status, CARC, RARC, Plan Id.
+
+**Acceptance met**
+
+* A member with claims exists in seed data.
+* SOQL returns expected fields for at least 3 test claims per member.
+
+---
+
+### 2) Experience Cloud
+
+* **Site**: Claim Inquiry Assistant (public landing + authenticated claim pages).
+* **Agent widget** added to the Claim page.
+* Optional deep-link prefill supported: `?member={Id}` (prefill for the topic).
+
+**Acceptance met**
+
+* Member can open site, authenticate, and reach the agent page.
+
+---
+
+### 3) Agentforce (topics, actions, prompts)
+
+**Topic**
+
+* **Claims Inquiry Assistant**: entry Q = Member ID or Email; lists claims; handles follow-ups.
+
+**Agent Actions / Flows**
+
+* `Member_Claim_Lookup` & `Member_Claim_Lookup_by_Email`: list claims for a member.
+* `Claim_Status_2new`: returns billed/paid/provider/status/CARC/RARC.
+* `Explain_Denial_Reason7`: uses denial tables to produce plain-English explanation.
+* `Estimate_Reimbursement_Date_New2`: returns a friendly ETA string.
+* `Create_support_Task_version2_new`: escalation task with context.
+* `Get_Support_Case_Status`: fetch case progress.
+
+**Prompt templates**
+
+* `Claim_Retriever_Insights` (summarize a claim).
+* `Denial_Code_Explainer` (CARC/RARC → reason + steps).
+
+**Acceptance met**
+
+* Happy path E2E: lookup → select claim → see status + explanation → optional ETA → create support task.
+
+---
+
+### 4) Security & PHI guardrails
+
+* Profile/Permission Set: “Claims Self-Service” with FLS for PHI.
+* Topic checks **email verification** step (available actions: `Verify_Member_Code_Custom` / by Email).
+* Basic audit/logging enabled for PHI responses.
+
+**Acceptance met**
+
+* PHI is hidden until verification is completed in test.
+
+---
+
+### 5) Demo script (what you can already show)
+
+1. Member signs in → agent greets.
+2. Member enters email → agent lists claims.
+3. Member selects a denied claim → agent shows amounts + CARC/RARC explanation.
+4. Agent estimates reimbursement date (if applicable).
+5. Member says “need help” → task created; confirmation message shown.
+
+---
+
+## C) What’s Next (roadmap you can execute)
+
+### Phase 1 — Quality & Insight (this sprint)
+
+**1) Duplicate Claim Detection**
+
+* **Action**: `Detect_Duplicate_Claims`
+* **Logic** (Flow + SOQL):
+
+  * Match window: same `Member__c`, `Provider__c`, same/similar `DOS` (±30 days), same `CPT/HCPCS` (or service group), similar amounts.
+  * Return suspected claim IDs + reason string.
+* **Surface**: add ♻️ badge in the claim list; provide “View duplicates” follow-up.
+* **Acceptance**: seeded duplicate pairs are flagged with precision ≥0.9.
+
+**2) Underpayment Check**
+
+* **Action**: `Underpayment_Check`
+* **Logic**: compare `Paid` vs reference (`Contracted_Rate__c` or fee schedule object); flag if delta exceeds threshold (e.g., 5% or \$25).
+* **Surface**: ⬇️ badge + explanation (“Paid \$X under contract by \$Y”).
+* **Acceptance**: at least 1 verified case in UAT correctly flags underpayment.
+
+**3) Claim History Summary**
+
+* **Prompt**: `Claim_History_Summary`
+* **Inputs**: last 12 months claims (SOQL → table passed to prompt).
+* **Output**: short narrative: total claims, top providers, total OOP, open issues.
+* **Acceptance**: counts match SOQL totals for the test member.
+
+---
+
+### Phase 2 — Pre-Denial Prevention & Appeals (next sprint)
+
+**4) Denial Risk Prediction (pre-submission)**
+
+* **Action**: `Predict_Denial_Risk`
+* **Inputs**: plan, diagnosis/procedure codes, place of service, modifiers, member history.
+* **Method**: start rule-based min-viable (CARC/RARC patterns + payer rules). If you have sample data, add an LLM prompt to score risk 0–1 + top 3 reasons.
+* **Surface**: 🟡/🔴 “High risk of denial” with fix suggestions; optional provider-facing view.
+* **Acceptance**: ≥80% of known past denials flagged on a validation set.
+
+**5) Appeal Letter Generation**
+
+* **Action**: `Generate_Appeal_Letter`
+* **Template**: DocGen (header, member/claim facts, denial text, plan language, supporting docs list).
+* **Flow**: generate PDF → create **Case** → attach PDF → return Case #.
+* **Acceptance**: letter includes mandatory sections; Case routed to Appeals queue.
+
+**6) Smart Escalation & SLAs**
+
+* **Custom Metadata**: `Denial_Routing__mdt` (Denial Code → Queue, Priority, SLA\_Hours).
+* **Update flow**: `Create_support_Task_version2_new` reads mapping, sets owner and due date.
+* **Acceptance**: 5 sample codes route to correct queues; SLA timers visible.
+
+---
+
+### Phase 3 — UX + Governance (hardening)
+
+**7) Mandatory OTP Before PHI (strict)**
+
+* Enforce `Verify_Member_Code_Custom` on all PHI branches (topic guard).
+* **Acceptance**: no PHI fields returned without verified state in logs.
+
+**8) Observability**
+
+* Add custom object `Agent_Trace__c` to log: member (hashed), claim id, actions called, latency, outcome, PHI flag.
+* Dashboard: action success rate, p50/p90 latency, escalations by reason.
+* **Acceptance**: dashboard shows last 7 days trends.
+
+**9) Content Tuning**
+
+* Update `Denial_Code_Explainer` with your payer’s official wording and remedy steps per code.
+* **Acceptance**: spot check 10 common codes for accuracy and tone.
+
+---
+
+## D) How to wire each piece (practical steps)
+
+**Duplicate Detection — build**
+
+1. Create **Flow** (Apex optional) `Detect_Duplicate_Claims`.
+2. Inputs: `MemberId`, optional `ClaimId`.
+3. SOQL:
+
+   * Find claims for `MemberId` within `DOS` ±30 days and same `Provider__c`.
+   * Filter by code match (store service code on `Claim__c` or join via line items if available).
+4. Score candidates (same code + |Billed − Billed’| < 10%).
+5. Output collection: `[ClaimNumber, DOS, Provider, Confidence, Reason]`.
+6. Add as **Agent Action**; add a **badge** in topic UI if any results.
+
+**Underpayment — build**
+
+1. Add reference table/object for contracted rates (by plan + code).
+2. Flow `Underpayment_Check`: fetch reference; compute delta; format explanation.
+3. Add follow-up “Open a payment review case”.
+
+**Denial Prediction — build**
+
+1. Start with **rules** table (code combos that commonly deny under your plan).
+2. Prompt template: send claim facts + recent member history → return `risk`, `reasons`, `fixes`.
+3. Flow wrapper `Predict_Denial_Risk` (returns score + reasons).
+4. Show risk badge before final answer.
+
+**Appeal Letter — build**
+
+1. DocGen template (Word/CLM): placeholders for claim facts + denial language.
+2. Flow: merge → create `Case` (Type = Appeal) → attach PDF → return case #
+3. Add button “Generate appeal” in reply options.
+
+**Smart routing — build**
+
+1. Custom Metadata `Denial_Routing__mdt` with columns: `DenialCode`, `Queue`, `Priority`, `SLA_Hours`.
+2. In escalation flow, lookup mapping; set Task/Case owner, priority, due date.
+
+**Claim history summary — build**
+
+1. SOQL last 12 months → transform to a compact JSON.
+2. Prompt template formats a short paragraph + bullets.
+
+**OTP — enforce**
+
+1. Put `Verify_Member_Code_Custom` at topic start; set a `Verified` flag in session context.
+2. Add a decision element: if not verified → no PHI actions.
+
+---
+
+## E) Test plan (quick checklist)
+
+* **Unit**: each new action returns the right shape with mocks.
+* **Integration**:
+
+  * Duplicate detection flags seeded pairs.
+  * Underpayment delta matches reference table.
+  * Appeal flow creates Case + attaches PDF.
+* **E2E**:
+
+  * Verified member → sees risk badge, can generate appeal, and case routes per metadata.
+* **Non-functional**:
+
+  * p50 < 3s for flows; LLM p90 < 8s.
+  * Logs redact PII.
+
+---
+
+## F) Deliverables by phase
+
+**Phase 1 (1–2 weeks)**
+
+* Actions: `Detect_Duplicate_Claims`, `Underpayment_Check`, `Claim_History_Summary`
+* UI badges + follow-ups
+* Test cases + demo script update
+
+**Phase 2 (1–2 weeks)**
+
+* Actions: `Predict_Denial_Risk`, `Generate_Appeal_Letter`
+* Routing metadata + escalation update
+* UAT of 10 denial scenarios
+
+**Phase 3 (1 week)**
+
+* OTP hardening, observability dashboard, explainer content tuning
+
+---
+
+If you want, I can turn **Phase 1** into bite-sized Jira stories with acceptance criteria and point estimates—ready to paste.

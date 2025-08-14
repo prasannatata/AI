@@ -1,0 +1,167 @@
+Got it — if we put all that detail into Jira **as-is**, it will be a wall of text.
+The trick is to **chunk it into collapsible, scan-friendly sections** using Jira’s supported Markdown / formatting so that:
+
+* It’s readable without scrolling forever
+* Each section can be checked off by QA or dev
+* Flows and Prompt Template actions are clear
+
+Here’s how I’d structure your Jira story with **headings, bullet points, code formatting for fields**, and collapsible panels for the heavy detail.
+
+---
+
+## **Jira Ticket Layout – Readable & Complete**
+
+---
+
+### **Story Title**
+
+**Payer Agent – Full Build (Data Model, Topics, Enhancements, Security, Data Setup, E2E Testing)**
+
+---
+
+### **Description**
+
+Implement the Payer Agent with existing topics and enhancements, configure the Salesforce data model, secure PHI, prepare demo datasets, and complete end-to-end testing.
+
+---
+
+### **Acceptance Criteria (High Level)**
+
+* Agent retrieves accurate claim data in real-time.
+* Predictive denial alerts appear before claim is denied.
+* Appeals auto-generate with correct data.
+* Claim history summaries highlight trends & anomalies.
+* Duplicate claims detection works.
+* Escalations route correctly.
+* PHI is only shown to authenticated, authorized users.
+* E2E testing passes without major defects.
+
+---
+
+### **Implementation Sections**
+
+---
+
+#### **1. Data Model & Configure Lightning Pages**
+
+**Objects & Relationships**
+
+* **Member\_\_c** → parent
+* **Claim\_\_c** → child of Member
+* **Appeal\_\_c** → child of Claim
+* **Plan\_\_c** → reference object
+
+**Key Fields**
+
+```
+Claim: Claim_ID__c, Status__c, Billed_Amount__c, Paid_Amount__c,
+Denial_Code_CARC__c, Denial_Code_RARC__c, Prediction_Score__c
+Appeal: Appeal_ID__c, Appeal_Status__c, Appeal_Letter_Body__c
+Member: Member_ID__c, Consent_Status__c
+```
+
+**Lightning Record Pages**
+
+* **Member LRP**: Related Claims & Appeals, Denial Risk Tile, Agent panel
+* **Claim LRP**: Tabs for Overview, Denial, Prediction, Appeals
+* **Appeal LRP**: Linked Claim, Status, Letter Body preview
+
+---
+
+#### **2. Topics & Related Actions**
+
+**Existing Topics**
+
+* **Get Claim Status** – Flow retrieves claim → Prompt Template displays details & reimbursement estimate
+* **Denial Reason** – Flow gets denial code → Prompt explains CARC/RARC in plain language
+* **Estimate Reimbursement** – Flow calculates member responsibility → Prompt provides timeline
+* **Appeal Assistance** – Flow collects data → Prompt generates appeal draft
+* **Escalation** – Flow routes case via omnichannel → Prompt confirms escalation
+* **Member Claim Lookup / By Email** – Flow lists claims → Prompt prompts selection
+* **Support Request Status / Interaction** – Flow gets case → Prompt shows status
+
+**Enhancement Topics**
+
+* **Claim Denial Prediction** – Flow calculates risk → Prompt warns member
+* **High Denial Risk Alerts** – Flow triggers before submission → Prompt explains risk
+* **Appeal Status Tracking** – Flow retrieves progress → Prompt displays updates
+* **Smart Escalation Routing** – Flow routes based on urgency → Prompt informs member
+* **Summarize Claim History** – Flow aggregates → Prompt highlights trends
+* **Detect Duplicate Claims** – Flow checks for duplicates → Prompt flags them
+
+---
+
+#### **3. Security – Permission Sets / Groups**
+
+* **ReadOnly**: Member, Claim, Appeal (no PHI fields)
+* **Standard**: Read/Update Claim, Appeal; create Appeal
+* **Admin**: Full CRUD & metadata changes
+* Require session authentication before PHI fields (Email, DOB, Member ID)
+
+---
+
+#### **4. Data Setup / Demo Preparation**
+
+*(Collapsible section for Jira)*
+
+<details>
+<summary>📂 Click to view detailed Data Setup</summary>
+
+**Sample Data Matrix**
+
+| Member  | Scenario                   | Expected Behavior                                             |
+| ------- | -------------------------- | ------------------------------------------------------------- |
+| MEM-001 | Approved claim             | Get Claim Status → Paid, \$0 responsibility                   |
+| MEM-002 | Denied – Medical Necessity | Denial Reason explains code → Appeal Assistance drafts letter |
+| MEM-003 | High-risk pre-submission   | Prediction alert before denial                                |
+| MEM-004 | Underpayment               | Summarize History flags issue                                 |
+| MEM-005 | Duplicate claims           | Detect Duplicates flags both                                  |
+| MEM-006 | Appeal in progress         | Appeal Status Tracking updates                                |
+| MEM-007 | Email lookup               | Lists claims for selection                                    |
+
+**Denial Codes Catalog**
+
+* Load top 10 CARC + RARC codes with plain descriptions
+
+**Plan Rules**
+
+* Preauth requirements, out-of-network policies (used in prediction)
+
+**Channels**
+
+* Experience Cloud, Lightning utility, Mobile Quick Actions
+
+</details>
+
+---
+
+#### **5. E2E Testing**
+
+* **Interactive sandbox**: Test each topic individually
+* **Batch scenarios**: Validate escalation triggers, predictions, and duplicate detection
+* Confirm security enforcement for PHI
+* Test web & mobile integration
+
+---
+
+### **Linked Work Items**
+
+* PSE-124 Create Payer Agent
+* PSE-193 Claim Inquiry Assistant Enhancements
+* Related sub-tasks for each topic & configuration step
+
+---
+
+If we put it in **this format in Jira**:
+
+* Headers = **bold** section names
+* Tables = for sample data
+* `<details>` tag for hiding bulk content (works in Jira Cloud Markdown)
+* Code blocks for field lists
+
+…it will be **readable, scannable, and still complete** without overwhelming the page.
+
+---
+
+If you want, I can **now take this structure and fill in your exact field names, sample data values, and flow/prompt names** so you can paste it directly into your Jira story with zero edits.
+Do you want me to prepare that final Jira-ready version?

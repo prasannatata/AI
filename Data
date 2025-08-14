@@ -1,0 +1,66 @@
+Here’s a **Jira story** for importing data from your personal org to **psdev** using the Salesforce Data Import Wizard, in the same concise, structured format you’ve been using.
+
+---
+
+**Story Title:**
+Data Migration – Import Data from Personal Org to PSDEV Using Data Import Wizard
+
+---
+
+**Description**
+Migrate required Salesforce records from the personal org to the PSDEV environment using the Data Import Wizard.
+The import must maintain record integrity, respect object relationships, and comply with field mapping requirements for Payer Agent and related objects (Member\_\_c, Claim\_\_c, Appeal\_\_c, Plan\_\_c).
+
+---
+
+**Acceptance Criteria**
+
+* **Given** the data export from the personal org is ready
+  **When** importing into PSDEV
+  **Then** the following must be ensured:
+
+  * Correct mapping of source fields to PSDEV fields
+  * All mandatory fields are populated
+  * Related records (e.g., Member → Claim → Appeal) are linked correctly using external IDs or lookups
+  * No duplicate records are created unless intended
+  * Import completes without validation or mapping errors
+
+* **Given** the import completes successfully
+  **Then** a verification process confirms:
+
+  * Record counts match expected totals
+  * Key records open correctly in PSDEV
+  * Relationships are intact (parent-child links)
+
+---
+
+**Design / Steps**
+
+1. **Export from Personal Org:**
+
+   * Use Salesforce Data Export or Data Loader to extract required objects (Member\_\_c, Claim\_\_c, Appeal\_\_c, Plan\_\_c, Denial Codes, etc.)
+   * Include External ID fields for relationship mapping.
+
+2. **Prepare Data for Import:**
+
+   * Clean data in Excel/CSV to ensure mandatory fields are filled and formats match PSDEV field types.
+   * Adjust picklist values if needed to match PSDEV configurations.
+
+3. **Import into PSDEV Using Data Import Wizard:**
+
+   * Navigate to **Setup → Data Import Wizard**
+   * Select each object in sequence (starting with parent objects, e.g., Plan\_\_c, then Member\_\_c, then Claim\_\_c, then Appeal\_\_c)
+   * Upload CSV, map fields, enable “Match using External IDs”
+   * Run import and monitor progress
+
+4. **Post-Import Validation:**
+
+   * Verify record counts and sample data in PSDEV
+   * Run reports to check data integrity and relationships
+   * Fix any failed or partial imports and re-run
+
+---
+
+If you’d like, I can also make you a **relationship import order diagram** showing the exact sequence to load Member → Claim → Appeal to avoid lookup failures. That would make this story execution much easier.
+
+Do you want me to create that diagram?

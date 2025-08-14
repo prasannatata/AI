@@ -1,0 +1,58 @@
+Here’s the **Jira story for “Summarize Claim History”** in the same format as your screenshot:
+
+---
+
+**Story Title:**
+Payer Agent – Summarize Claim History – Related Action
+
+---
+
+**Description**
+Implement a feature in the Payer Agent that retrieves and summarizes a member’s complete claim history.
+The system should aggregate claims, identify trends, highlight recurring issues, and flag potential problems such as underpayments or repeated denials.
+This allows members and support agents to quickly understand the overall claim pattern without manually reviewing individual claims.
+
+---
+
+**Acceptance Criteria**
+
+* **Given** the user provides a valid Member ID or Email
+  **When** claims exist for that member
+  **Then** the agent should retrieve and summarize claim history including:
+
+  * Count of claims by status (Paid, Denied, In Review, etc.)
+  * Common denial codes and reasons
+  * High-value claims or frequent providers
+  * Flags for underpayment or other anomalies
+
+* **Given** no claims exist for the member
+  **Then** the agent should inform the user that there is no claim history available.
+
+* Summary must be presented in plain language, be easy to understand, and only be shown to authenticated, authorized users in compliance with PHI security policies.
+
+---
+
+**Design**
+
+* **Agent Builder**
+
+  * **Topic Name:** Summarize Claim History
+
+* **Actions related to Topic:**
+
+  * **Flow:**
+
+    1. Input Member ID or Email
+    2. Retrieve all claims linked to the member from the Claim\_\_c object
+    3. Aggregate claims by status, provider, denial codes, and payment amounts
+    4. Flag any claims marked as Underpayment\_Flag\_\_c or Duplicate\_Flag\_\_c
+    5. Return structured data for summary generation
+
+  * **Prompt Template (optional):**
+
+    * Present the summary in a concise, member-friendly format, highlighting trends, top denial reasons, and any recommended follow-up actions
+
+---
+
+If you’d like, I can now write **Detect Duplicate Claims** in the exact same Jira format so your set of enhancement stories is complete.
+Do you want me to prepare that next?

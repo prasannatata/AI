@@ -1,0 +1,61 @@
+Here’s your **Jira story for "Auto Alerts for High Denial Risk"** in the same format shown in your screenshot:
+
+---
+
+**Story Title:**
+Payer Agent – Auto Alerts for High Denial Risk – Related Action
+
+---
+
+**Description**
+Implement a feature in the Payer Agent that proactively alerts members when a claim has a high probability of denial before it is finalized.
+The system should analyze claim history and plan rules, calculate a denial risk score, and trigger an alert if the risk is above the configured threshold.
+This helps members take preventive action such as verifying coverage, submitting required documentation, or correcting coding errors before the claim decision.
+
+---
+
+**Acceptance Criteria**
+
+* **Given** the user provides a valid Claim ID or Member ID
+  **When** the claim is in “In Review” or “Pending” status
+  **Then** the agent should evaluate historical claim patterns and plan rules to calculate a denial risk score.
+
+* **Given** the calculated risk score is above the configured threshold (e.g., ≥70%)
+  **Then** the agent should display a proactive high-risk denial alert to the member with:
+
+  * Risk percentage
+  * Likely reasons for potential denial
+  * Recommended next steps
+
+* **Given** the claim risk is below the threshold
+  **Then** the agent should confirm no action is needed at this time.
+
+* The alert should only be visible to authenticated, authorized users and must comply with PHI security policies.
+
+---
+
+**Design**
+
+* **Agent Builder**
+
+  * **Topic Name:** Auto Alerts for High Denial Risk
+
+* **Actions related to Topic:**
+
+  * **Flow:**
+
+    1. Input Claim ID or Member ID
+    2. Retrieve claim and member plan details
+    3. Retrieve claim history for the member
+    4. Apply rules/patterns to calculate denial risk score
+    5. Compare score to threshold and set HighRisk\_\_c flag if exceeded
+    6. Pass score and reasoning to the prompt (if applicable)
+
+  * **Prompt Template (optional):**
+
+    * Display alert with score, reason, and next steps.
+
+---
+
+If you want, I can now create **similar Jira stories for all other enhancement topics** so you have a consistent set for Payer Agent in your backlog.
+Do you want me to prepare that full set?

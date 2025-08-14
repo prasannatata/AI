@@ -1,0 +1,64 @@
+Here’s the **Jira story** for creating a user with Einstein Agent access, assigning permission sets, and granting object-level access — in the same format as your screenshot.
+
+---
+
+**Story Title:**
+Payer Agent – Create Einstein Agent User and Assign Permissions
+
+---
+
+**Description**
+Set up a new Salesforce user for the Einstein Agent with the necessary permission sets, permission set groups, and object-level access to support Payer Agent functionalities.
+This user will be used for agent-related flows, prompt templates, and backend data access, ensuring the agent can securely retrieve and process claim, member, and appeal data.
+
+---
+
+**Acceptance Criteria**
+
+* **Given** an Einstein Agent user needs to be created
+  **When** the setup is complete
+  **Then** the user should have:
+
+  * A valid Salesforce license and Einstein Agent add-on (if applicable)
+  * Assigned permission sets for Payer Agent functionality
+  * Object-level CRUD access to Claim\_\_c, Member\_\_c, Appeal\_\_c, and related reference objects (e.g., Plan\_\_c)
+  * Field-level access to required fields for data retrieval and display
+  * Restricted PHI fields unless required for the use case
+
+* **Given** the permission sets are assigned
+  **Then** the user should be able to execute Payer Agent flows and related actions without encountering access errors.
+
+* **Given** the security setup is complete
+  **Then** the configuration should comply with PHI security policies and follow the principle of least privilege.
+
+---
+
+**Design**
+
+* **Agent Builder**
+
+  * **User Type:** Salesforce User with Einstein Agent capabilities
+
+* **Actions related to User Creation & Setup:**
+
+  * **Admin Steps (Setup Menu):**
+
+    1. Create new Salesforce user with required license type
+    2. Assign Einstein Agent permission set group (if available)
+    3. Assign Payer Agent-specific permission sets:
+
+       * Payer\_Agent\_Standard (Read/Update on Claim\_\_c, Appeal\_\_c)
+       * Payer\_Agent\_ReadOnly (Read on Member\_\_c, Claim\_\_c)
+       * Omnichannel\_Access (for escalations, if needed)
+    4. Configure object-level CRUD access:
+
+       * Claim\_\_c: Read, Create, Edit
+       * Member\_\_c: Read
+       * Appeal\_\_c: Read, Create, Edit
+       * Plan\_\_c: Read
+    5. Configure field-level security to allow required fields for flows/prompts
+    6. Enable login and API access for integration scenarios
+
+---
+
+Do you want me to also make a **diagram** showing the user creation and permission assignment flow so it’s easier for your dev/QA team to follow in Jira? That would make the story even more self-contained.

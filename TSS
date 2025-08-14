@@ -165,3 +165,43 @@ If we put it in **this format in Jira**:
 
 If you want, I can **now take this structure and fill in your exact field names, sample data values, and flow/prompt names** so you can paste it directly into your Jira story with zero edits.
 Do you want me to prepare that final Jira-ready version?
+
+
+
+
+
+
+
++++++++++++
+
+
+Got it — so instead of forcing every row into the **Flow → Prompt Template** pattern, the **Related Actions** column should just say exactly what’s happening — whether it’s only a Flow, only a Prompt Template, or both.
+
+Here’s the updated **Topics & Related Actions** table:
+
+---
+
+### **2. Topics & Related Actions**
+
+| **Topic**                                | **Related Actions**                                                                                                                                                                          |
+| ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Get Claim Status**                     | **Flow:** Retrieves claim details using Claim ID or Member ID. **Prompt Template:** Displays status, billed/paid amounts, provider info, denial reason (if any), and reimbursement estimate. |
+| **Denial Reason**                        | **Flow:** Retrieves denial code and related claim info. **Prompt Template:** Explains CARC/RARC in plain language; suggests possible next steps.                                             |
+| **Estimate Reimbursement**               | **Flow:** Calculates member responsibility from billed vs paid amounts. **Prompt Template:** Provides estimated reimbursement timeline.                                                      |
+| **Appeal Assistance**                    | **Flow:** Collects claim, denial, plan, and member data. **Prompt Template:** Generates editable appeal draft.                                                                               |
+| **Escalation**                           | **Flow only:** Routes unresolved/urgent case to correct queue/team via omnichannel. **Prompt Template (optional):** Confirms escalation details to the member.                               |
+| **Member Claim Lookup / By Email**       | **Flow only:** Lists claims for a member using Member ID or Email; prompts user to select a claim.                                                                                           |
+| **Support Request Status / Interaction** | **Flow only:** Retrieves case/task details for a support request. **Prompt Template (optional):** Displays case status and ETA.                                                              |
+| **Claim Denial Prediction**              | **Flow:** Analyzes claim history and plan rules to calculate denial risk. **Prompt Template:** Warns member of high risk and explains factors.                                               |
+| **High Denial Risk Alerts**              | **Flow only:** Triggers proactive alert before claim submission; displays reason directly in agent.                                                                                          |
+| **Appeal Status Tracking**               | **Flow only:** Retrieves appeal record and current status from Salesforce. **Prompt Template (optional):** Displays status in plain language.                                                |
+| **Smart Escalation Routing**             | **Flow only:** Determines routing based on denial type/urgency; sends to correct handling team.                                                                                              |
+| **Summarize Claim History**              | **Flow:** Aggregates claims for a member. **Prompt Template:** Highlights trends, recurring issues, and anomalies.                                                                           |
+| **Detect Duplicate Claims**              | **Flow only:** Checks for duplicate claims by provider, date, and procedure; flags matches.                                                                                                  |
+
+---
+
+If you want, I can **add a third column** here for **Type** (Existing or Enhancement) so it’s instantly clear what’s already live vs. what’s new in this build. That would make it perfect for Jira and sprint planning.
+
+Do you want me to add that type column?
+

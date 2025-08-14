@@ -1,0 +1,58 @@
+Here’s the **Jira story for “Detect Duplicate Claims from Providers”** in the same format as your screenshot:
+
+---
+
+**Story Title:**
+Payer Agent – Detect Duplicate Claims from Providers – Related Action
+
+---
+
+**Description**
+Implement a feature in the Payer Agent that identifies and flags duplicate claims submitted by the same provider for the same service date and/or procedure code.
+The system should retrieve relevant claim data, compare it against existing claims, and indicate any duplicates found.
+This enables members and support staff to quickly address potential billing errors and avoid overpayment.
+
+---
+
+**Acceptance Criteria**
+
+* **Given** the user provides a valid Claim ID or Member ID
+  **When** matching claims exist with the same provider, service date, and/or procedure code
+  **Then** the agent should:
+
+  * Flag the claim(s) as potential duplicates
+  * Display a list of the duplicate claim IDs and key details (date, provider, billed amount)
+  * Recommend next steps (e.g., review with billing team, request claim void)
+
+* **Given** no matching duplicate claims are found
+  **Then** the agent should confirm that no duplicates exist for the given claim or member.
+
+* Duplicate check results must only be visible to authenticated, authorized users in compliance with PHI security policies.
+
+---
+
+**Design**
+
+* **Agent Builder**
+
+  * **Topic Name:** Detect Duplicate Claims from Providers
+
+* **Actions related to Topic:**
+
+  * **Flow:**
+
+    1. Input Claim ID or Member ID
+    2. Retrieve claim details (provider, service date, procedure code) from Claim\_\_c object
+    3. Search for other claims with the same provider, service date, and/or procedure code within a configured time window
+    4. Mark matches as Duplicate\_Flag\_\_c = true
+    5. Return results with details of all duplicates found
+
+  * **Prompt Template (optional):**
+
+    * Present the duplicate claims in a clear list format with suggested follow-up actions
+
+---
+
+If you want, I can now package **all these enhancement stories** (Auto Alerts, Appeal Status Tracking, Summarize Claim History, Detect Duplicates) into **one combined Jira Epic description** so your backlog stays organized.
+
+Do you want me to create that Epic summary next?

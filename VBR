@@ -1,0 +1,58 @@
+Here’s the **Jira story for “Appeal Status Tracking”** in the same format as your screenshot:
+
+---
+
+**Story Title:**
+Payer Agent – Appeal Status Tracking – Related Action
+
+---
+
+**Description**
+Implement a feature in the Payer Agent that retrieves and displays the current status of an appeal for a denied claim.
+The system should fetch the appeal record linked to the claim, show the latest status and key dates, and present the information in a member-friendly format.
+This helps members stay informed about the progress of their appeal without having to contact support.
+
+---
+
+**Acceptance Criteria**
+
+* **Given** the user provides a valid Claim ID or Appeal ID
+  **When** an appeal record exists for that claim
+  **Then** the agent should retrieve the appeal details, including:
+
+  * Current appeal status (e.g., Draft, Submitted, In Review, Approved, Denied)
+  * Submission date and decision date (if available)
+  * Any pending actions or requests for additional information
+
+* **Given** no appeal record exists for the provided claim
+  **Then** the agent should inform the user that no appeal is currently on file.
+
+* The appeal status should be displayed in plain language and must only be accessible to authenticated, authorized users in compliance with PHI security policies.
+
+---
+
+**Design**
+
+* **Agent Builder**
+
+  * **Topic Name:** Appeal Status Tracking
+
+* **Actions related to Topic:**
+
+  * **Flow:**
+
+    1. Input Claim ID or Appeal ID
+    2. Retrieve appeal record from Salesforce Appeal\_\_c object linked to the claim
+    3. Extract fields: Appeal\_Status\_\_c, Submission\_Date\_\_c, Decision\_Date\_\_c, and any escalation notes
+    4. Return retrieved details to the prompt (if applicable)
+    5. If no appeal found, return “No appeal on file” response
+
+  * **Prompt Template (optional):**
+
+    * Display the status in plain language (e.g., “Your appeal is currently in review. We expect a decision by \[date].”)
+
+---
+
+If you want, I can also prepare **Claim Denial Prediction**, **Summarize Claim History**, and **Detect Duplicate Claims** in this same Jira format so your Payer Agent enhancement tickets are complete and consistent.
+
+Do you want me to go ahead and do that?

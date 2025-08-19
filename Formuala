@@ -3,3 +3,10 @@ IF(
   "• Pending longer than 10 days", 
   {!vReasons} & BR() & "• Pending longer than 10 days"
 )
+
+
+IF(
+  ISBLANK({!vReasons}),
+  "• High billed amount",
+  {!vReasons} & BR() & "• High billed amount"
+)

@@ -16,3 +16,10 @@ IF(
   "• Possible duplicate (same member, provider, date)",
   {!vReasons} & BR() & "• Possible duplicate (same member, provider, date)"
 )
+
+
+IF(
+  ISBLANK({!vReasons}),
+  "• Missing member or provider info",
+  {!vReasons} & BR() & "• Missing member or provider info"
+)

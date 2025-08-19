@@ -10,3 +10,9 @@ IF(
   "• High billed amount",
   {!vReasons} & BR() & "• High billed amount"
 )
+
+IF(
+  ISBLANK({!vReasons}),
+  "• Possible duplicate (same member, provider, date)",
+  {!vReasons} & BR() & "• Possible duplicate (same member, provider, date)"
+)

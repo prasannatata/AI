@@ -1,0 +1,5 @@
+IF(
+  ISBLANK({!vReasons}), 
+  "• Pending longer than 10 days", 
+  {!vReasons} & BR() & "• Pending longer than 10 days"
+)

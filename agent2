@@ -1,0 +1,96 @@
+Perfect — adding the **cost/licensing differences** will make this comparison stronger and useful for both Confluence and PPT. Here’s a **condensed side-by-side summary** showing *use focus + template maturity + cost/licensing*:
+
+---
+
+# Industry-Specific Agentforce Usage & Cost Differences
+
+Salesforce delivers Agentforce via **Enterprise/Unlimited editions**, typically priced with **Flex Credits** (per action). Some industries get **bundled packs in their Industry Cloud**, while others rely on **generic or partner-built templates**.
+
+---
+
+### Automotive vs. Manufacturing
+
+* **Use:**
+
+  * Automotive → customer-facing bots (maintenance scheduling, dealer chat, inventory search).
+  * Manufacturing → internal ops (supply chain, QA prediction, field tech support).
+* **Templates:** Automotive has **full prebuilt pack**; Manufacturing reuses **Automotive/Field Service skills**.
+* **Cost:** Automotive Cloud bundle often includes templates (lower incremental cost). Manufacturing usually needs extra **Flex Credit usage/custom builds**.
+
+---
+
+### Communications vs. Energy & Utilities
+
+* **Use:**
+
+  * Communications → billing resolution & quoting/order automation.
+  * Energy → outage triage, billing FAQs, sustainability reporting.
+* **Templates:** Telco has **ready-made templates** in Communications Cloud. Utilities rely on **generic Field Service + Net Zero Cloud add-ons**.
+* **Cost:** Communications templates reduce build cost upfront; Energy requires **partner config + higher Flex Credit consumption**.
+
+---
+
+### Consumer Goods vs. Retail
+
+* **Use:**
+
+  * Consumer Goods → internal sales, retail execution, KAM, trade promos.
+  * Retail → customer-facing guided shopping, order changes, loyalty promotions.
+* **Templates:** Both have **full template libraries**, tied to Consumer Goods Cloud & Retail Cloud POS.
+* **Cost:** Bundled in Industry Cloud → **lower setup cost**; heavy usage (store visits, orders) → **higher Flex Credit burn**.
+
+---
+
+### Education vs. Nonprofit
+
+* **Use:**
+
+  * Education → admissions bots, advising copilots, alumni donor outreach.
+  * Nonprofit → donor engagement, grant prospecting, client service chatbots.
+* **Templates:** Education has **formal packs**; Nonprofit is **emerging with starter templates**.
+* **Cost:** Education benefits from **Education Cloud packaging** (predictable cost). Nonprofit often buys **à la carte credits** → variable cost, but lower volumes.
+
+---
+
+### Financial Services vs. Healthcare
+
+* **Use:**
+
+  * Financial Services → banking assistants, insurance claim bots, advisor copilots, collections.
+  * Healthcare → patient/member chatbots, home health coordination, disease surveillance.
+* **Templates:** Both have **strong, regulated packs** with compliance guardrails.
+* **Cost:** FS templates may be included in FSC bundles; Healthcare/Pharma often need **extra compliance layers + more credits** (higher ops cost).
+
+---
+
+### Media & Entertainment vs. Professional Services
+
+* **Use:**
+
+  * Media → ad sales proposal automation, subscriber self-service.
+  * Professional Services → project scheduling, expert finder, client service portals.
+* **Templates:** Media has **formal templates**; PS relies on **partner quick starts**.
+* **Cost:** Media templates **lower upfront build costs**. Professional Services often **custom-builds → higher consulting + credit cost**.
+
+---
+
+### Public Sector vs. Technology
+
+* **Use:**
+
+  * Public Sector → digital civil servants (complaints, benefits, compliance, hiring).
+  * Technology → internal IT/dev copilots, support bots, upsell targeting.
+* **Templates:** Public Sector (2025 launch) → **rich library packaged in Gov Cloud**. Tech relies on **generic + custom builds**.
+* **Cost:** Gov Cloud includes **bundled pack with FedRAMP compliance** (higher base license, but lower incremental credits). Tech often **heaviest Flex Credit consumers** due to custom development + high volume usage.
+
+---
+
+✅ **Patterns of Cost & Templates:**
+
+* **Bundled / Lower Incremental Cost:** Automotive, Communications, Consumer Goods, Education, Financial Services, Healthcare, Retail, Public Sector.
+* **Higher Custom/Partner Cost:** Construction/Real Estate, Manufacturing, Nonprofit, Professional Services, Technology.
+* **Flex Credit Burn Hotspots:** High-volume retail orders, energy outage reports, and tech support bots.
+
+---
+
+Would you like me to design this into a **visual 2D grid** for PPT (Industries on Y-axis, columns = *Use Focus*, *Template Maturity*, *Cost Model*) so you can show differences in **one glance**?

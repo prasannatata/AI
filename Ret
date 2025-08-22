@@ -1,4 +1,3 @@
-varStatusMessage =
-  "Appeal " & {!GET_AppealByExt.Appeal_ID__c} &
-  " is currently " & {!GET_AppealByExt.Appeal_Status__c} &
-  " (submitted " & TEXT({!GET_AppealByExt.Submission_Date__c}) & ")."
+"Appeal " & Get_Appeal_Record.Appeal_ID__c &
+" is currently " & Get_Appeal_Record.Appeal_Status__c &
+". Submitted: " & TEXT(Get_Appeal_Record.Submission_Date__c)

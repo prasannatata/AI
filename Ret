@@ -1,0 +1,11 @@
+varStatusMessage =
+  "Appeal " & {!GET_AppealByExt.Appeal_ID__c} &
+  " for Claim " & IF(ISBLANK({!GET_Claim_ById.Claim_ID__c}), "—", {!GET_Claim_ById.Claim_ID__c}) &
+  " is currently " & {!GET_AppealByExt.Appeal_Status__c} &
+  ". Submitted: " & TEXT({!GET_AppealByExt.Submission_Date__c}) &
+  IF(NOT(ISBLANK({!GET_AppealByExt.Decision_Date__c})),
+     ". Decision Date: " & TEXT({!GET_AppealByExt.Decision_Date__c}),
+     ". Decision Date: Pending"
+  );
+varSuccess = TRUE;
+varError = "";

@@ -1,3 +1,1 @@
-"Appeal " & Get_Appeal_Record.Appeal_ID__c &
-" is currently " & Get_Appeal_Record.Appeal_Status__c &
-". Submitted: " & TEXT(Get_Appeal_Record.Submission_Date__c)
+Appeal {!Get_Appeal_Record.Appeal_ID__c} is currently {!Get_Appeal_Record.Appeal_Status__c}. Submitted: {!Get_Appeal_Record.Submission_Date__c}.

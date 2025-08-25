@@ -5,3 +5,10 @@
 
 
 IF(ISBLANK(outDuplicateList), TT_DupLine, outDuplicateList & BR() & TT_DupLine)
+
+
+IF(ISBLANK({!outDuplicateList}),
+   {!TT_DupLine},
+   {!outDuplicateList} & BR() & {!TT_DupLine}
+)
+

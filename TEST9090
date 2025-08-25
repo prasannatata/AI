@@ -1,0 +1,47 @@
+Got it 👍 — instead of listing **all test conditions**, you just want the **core features and functionality** of Service Assistant that QA should validate. Here’s a clean **Jira “What to Test” section** focused only on the **main capabilities**:
+
+---
+
+# 📂 Jira – What to Test (Core Features of Service Assistant)
+
+### 🔹 Component Access
+
+* Verify Service Assistant component appears on the Case page for users with the **Service Planner** permission set.
+* Verify the component respects **eligibility rules** (shows only when Case meets Service Plan Eligibility).
+
+### 🔹 Summary State
+
+* Verify the component generates a **Case Summary** with high-level resolution steps when an eligible case is opened.
+* Verify service reps can provide **feedback** on summary accuracy.
+
+### 🔹 Plan State
+
+* Verify service reps can **draft a service plan** from the summary.
+* Verify the plan is generated with **step-by-step guidance** (sections: Gather Info → Work Case → Resolve → Wrap Up).
+* Verify reps can **execute steps, mark them complete, and sync progress** across multiple reps.
+* Verify reps can **close a plan** and that it becomes read-only.
+
+### 🔹 Redraft Plan
+
+* Verify reps can **redraft a plan** when new case information is added.
+* Verify redrafted plan replaces the old plan.
+
+### 🔹 Knowledge Integration
+
+* Verify service plans can include **steps derived from Knowledge Articles**.
+* Verify Assistant indicates **AI-suggested steps** (marked with \*).
+
+### 🔹 Metrics & Insights
+
+* Verify Service Assistant usage and feedback are captured in **Service Insights dashboards**:
+
+  * Cases with/without plans
+  * Plan topics (started, completed)
+  * Feedback ratings (positive/negative)
+  * Average handle time with plans
+
+---
+
+👉 This is the **core test scope** — just the **main features Service Assistant provides** (component visibility, summary, plan drafting/execution, redrafting, knowledge integration, and metrics).
+
+Would you like me to now turn this into a **single Jira Story with these “What to Test” bullets included**, or should I draft it as **one Epic with subtasks** (each subtask = one of the core features above)?

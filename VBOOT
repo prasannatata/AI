@@ -1,0 +1,78 @@
+Perfect 👍 thanks for clarifying. Since Magon specifically asked for **real acceptance criteria** (not generic ones), let’s frame them in **Given / When / Then** style based on what **Service Assistant** actually does in Salesforce (from the Service Assistant setup, permissions, knowledge, eligibility, and testing articles).
+
+Here’s a **Jira story + acceptance criteria draft** you can reuse:
+
+---
+
+# 📌 Jira Story – Configure & Test Service Assistant
+
+**User Story**
+As a Salesforce Admin, I want to configure and test Service Assistant so that agents can use AI-driven guidance to resolve cases faster and provide consistent service to members.
+
+---
+
+### ✅ Acceptance Criteria (Gherkin Format)
+
+**Permissions & Setup**
+
+* **Given** Service Assistant is enabled in the org,
+  **When** an Admin assigns the *Manage AI Agents* and *Use AI Agents* permissions,
+  **Then** the Service Assistant setup page should be accessible, and agents should see the assistant in Service Console.
+
+**Service Plan Eligibility**
+
+* **Given** eligibility rules are defined using the provided flow template,
+  **When** a case meets the eligibility criteria (e.g., entitlement active, correct product/service),
+  **Then** the Service Assistant should launch automatically and guide the agent through next steps.
+
+**Knowledge Retrieval**
+
+* **Given** relevant Knowledge Articles are published and mapped to topics,
+  **When** an agent asks a question within Service Assistant,
+  **Then** the assistant should retrieve and display the most relevant article with a summary and link.
+
+**Quick Actions / Blocks**
+
+* **Given** Service Assistant blocks (e.g., guided flows, knowledge answers, recommendations) are configured,
+  **When** the assistant engages during a live case,
+  **Then** the agent should be able to trigger those blocks as actionable buttons or responses.
+
+**Testing & Performance**
+
+* **Given** the Test Guide questions are executed,
+  **When** agents enter those queries in Service Assistant,
+  **Then** the assistant should respond with consistent, accurate answers matching expected knowledge sources.
+* **Given** multiple agents are active in parallel,
+  **When** Service Assistant is used during case handling,
+  **Then** the responses should return within acceptable latency thresholds (<2 seconds average).
+
+---
+
+### 🔑 Licenses & Permissions Needed
+
+* Service Cloud **Enterprise or Unlimited Edition**
+* **Einstein for Service add-on** (or Service Intelligence SKU)
+* Permissions: `Manage AI Agents`, `Use AI Agents`
+
+---
+
+### 🖥️ App to Use for Testing
+
+* **Service Console App** (primary for agent workflows)
+* **Experience Cloud Site** (optional, if testing member self-service)
+
+---
+
+### 📂 Use Cases to Test
+
+1. Agent receives Service Assistant automatically when opening an eligible Case.
+2. Assistant provides guided workflows (blocks) for resolution steps.
+3. Assistant surfaces correct Knowledge Articles for FAQs.
+4. Service Plan eligibility correctly controls when the Assistant shows up.
+5. Performance validated with multiple concurrent sessions.
+
+---
+
+👉 This format covers **exactly what Service Assistant does**, with real conditions and outcomes.
+
+Do you want me to now **expand this into multiple Jira tickets** (one per article: Permissions, Eligibility, Knowledge, Testing, Performance, etc.), or should I keep it as **one epic with acceptance criteria grouped**?

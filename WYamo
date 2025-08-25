@@ -1,0 +1,165 @@
+Got it 👍 — let’s put everything you’ve gathered (Service Assistant component behavior + metrics/insights setup + testing guide) into **one polished Jira Story** that covers **User Story, Acceptance Criteria, Testing, and Metrics**.
+
+---
+
+# 📌 Jira Story – Service Assistant (Component + Metrics + Testing)
+
+**Epic Link:** Service Assistant Enablement
+**Type:** User Story
+**Priority:** High
+
+---
+
+## **User Story**
+
+As a **Service Rep**, I want to use the Service Assistant component on Case records so that I can quickly review case summaries, draft and execute service plans, and collaborate with teammates.
+As a **Service Manager**, I want to monitor Service Assistant usage and feedback so that I can track plan effectiveness, identify low-performing topics, and continuously improve case resolution.
+
+---
+
+## **Acceptance Criteria (Given / When / Then)**
+
+### 🔹 Component Access & Eligibility
+
+* **Given** a user has the *Service Planner* permission set,
+  **When** they open a Case that meets eligibility criteria,
+  **Then** the Service Assistant component is visible and shows a case summary.
+
+* **Given** a user does not have the permission set,
+  **When** they open a Case,
+  **Then** the Service Assistant component is hidden.
+
+* **Given** a Case does not meet eligibility,
+  **When** a user with the permission set opens it,
+  **Then** the component shows a “not eligible” message.
+
+---
+
+### 🔹 Summary State
+
+* **Given** an eligible Case is opened,
+  **When** Service Assistant loads,
+  **Then** it generates a Case summary with suggested resolution steps and timestamp.
+
+* **Given** the summary fails to generate,
+  **When** I update Case Subject/Description and sync,
+  **Then** a new summary is generated.
+
+---
+
+### 🔹 Plan State
+
+* **Given** a rep clicks **Draft Plan**,
+  **When** Service Assistant enters the plan state,
+  **Then** a service plan is generated with sequential steps: Gather Info → Work Case → Resolve → Wrap Up.
+
+* **Given** steps are marked complete,
+  **When** another rep syncs the plan,
+  **Then** the latest progress is visible.
+
+* **Given** a rep closes the plan,
+  **When** other reps sync,
+  **Then** the plan is read-only for all users.
+
+---
+
+### 🔹 Redraft Plan State
+
+* **Given** new case info is added (topic or Case fields) and no steps are complete,
+  **When** a rep clicks **Redraft Plan**,
+  **Then** a new plan is generated and replaces the old one.
+
+* **Given** steps are already complete,
+  **When** new info is added,
+  **Then** the Redraft Plan button is not available.
+
+---
+
+### 🔹 Error Handling
+
+* **Given** Service Assistant is deactivated,
+  **When** a user tries to draft/execute a plan,
+  **Then** the component shows an error message and becomes read-only.
+
+* **Given** a Case is closed mid-plan,
+  **When** Service Assistant is open,
+  **Then** the rep is notified, but the plan remains visible in read-only.
+
+---
+
+### 🔹 Knowledge & Suggestions
+
+* **Given** Knowledge Articles are mapped to topics,
+  **When** a rep asks a related FAQ (e.g., “What does denial CO-50 mean?”),
+  **Then** the Assistant retrieves and cites the most relevant KA.
+
+* **Given** no KA exists,
+  **When** a rep asks a question,
+  **Then** the Assistant shows fallback guidance or escalation options.
+
+---
+
+### 🔹 Metrics & Insights (Manager View)
+
+* **Given** Data Cloud + Service Insights are configured,
+  **When** I open the Service Insights app → Service Assistant Analytics,
+  **Then** I see dashboards with KPIs (cases with plans, handle time, topic ratings).
+
+* **Given** reps submit feedback on plans,
+  **When** I view the *Plan Feedback* tab,
+  **Then** I see positive/negative ratings by topic.
+
+* **Given** cases are handled with Service Plans,
+  **When** I compare metrics,
+  **Then** average handle time is captured per topic.
+
+---
+
+## **What to Test (QA Scope)**
+
+1. **Component Visibility** – eligible vs ineligible cases; user with vs without permissions.
+2. **Summary Generation** – validates Case summary and sync refresh.
+3. **Plan Execution** – step progression, sync between multiple reps, plan close behavior.
+4. **Redraft Plan** – regenerate with new Case info, restricted if steps are complete.
+5. **Error States** – deactivated Assistant, closed Case mid-plan, empty summary/plan.
+6. **Knowledge Retrieval** – mapped KA vs unmapped, freshness, unpublished articles.
+7. **Metrics Validation** – verify KPIs in Service Insights dashboard (cases with plans, completion %, ratings, handle time).
+8. **Security** – ensure only users with permissions see/use component, FLS respected.
+9. **Performance** – test latency <5s, multiple agents in parallel.
+
+---
+
+## **Licenses & Permissions Needed**
+
+* Service Cloud Enterprise/Unlimited
+* Einstein for Service or Service Intelligence add-on
+* Permission sets:
+
+  * Service Planner User
+  * Manage AI Agents
+  * Use AI Agents
+  * Data Cloud Admin + Tableau (for metrics setup)
+
+---
+
+## **Apps to Use for Testing**
+
+* **Service Console App** (primary rep workflow)
+* **Service Insights App** (for metrics dashboards)
+* **Optional:** Experience Cloud site if exposing to external users
+
+---
+
+## **Evidence Required**
+
+* Screenshots of Summary, Plan, Redraft states
+* Logs of step progression + sync
+* Dashboard exports from Service Insights
+* Feedback ratings sample (positive/negative)
+* Performance timings (latency benchmarks)
+
+---
+
+👉 This is now a **complete Jira-ready story**: includes **user story, acceptance criteria, what to test, metrics, permissions, and evidence** all tied back to the docs you gave.
+
+Do you want me to **split this into multiple Jira stories** (e.g., one for Component Behavior, one for Metrics, one for Testing), or keep it as a **single consolidated master story**?

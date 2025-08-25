@@ -12,3 +12,9 @@ IF(ISBLANK({!outDuplicateList}),
    {!outDuplicateList} & BR() & {!TT_DupLine}
 )
 
+===========
+IF(
+   ISBLANK({!outDuplicateList}),
+   {!TTDupLine},
+   {!outDuplicateList} & BR() & {!TTDupLine}
+)

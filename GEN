@@ -1,20 +1,87 @@
-- Claim {!curDup.Claim_Number__c} – ${!curDup.Billed_Amount__c}
-  ({!curDup.Provider__c}, {!curDup.Service_Date__c}, {!curDup.Procedure_Code__c})/
+Here is the Acceptance Criteria in the **Given/When/Then** format, focused on the core functionalities of what a Service Agent (Agentforce) does:
+
+***
+
+### Acceptance Criteria (Given/When/Then Format)
+
+**1. Automated Case Resolution**
+- **Given** a customer submits a common inquiry (e.g., order status, password reset),
+- **When** the Service Agent receives the request,
+- **Then** the Agent automatically provides the correct response and logs the interaction in the case record.[1][2]
+
+**2. Escalation of Complex Cases**
+- **Given** a customer presents an inquiry that the Agent cannot resolve based on available knowledge and permissions,
+- **When** the Agent determines escalation is required,
+- **Then** the Agent routes the case to a human service agent, transferring all previous interaction details.[3][4]
+
+**3. Real-Time Data Utilization**
+- **Given** the customer account data and case history are available in Salesforce,
+- **When** the Agent handles a case,
+- **Then** the Agent uses this data to provide contextual, personalized responses.[5][6]
+
+**4. Multi-Channel Support**
+- **Given** the customer initiates contact via any supported channel (web, email, chat, social media),
+- **When** a request is made,
+- **Then** the Agent responds consistently and autonomously across all these channels.[4][6]
+
+**5. Activity Logging and Auditing**
+- **Given** the Agent performs an action or communicates with the customer,
+- **When** the action is completed,
+- **Then** a record of the Agent’s activity is created and can be audited within the Service Console.[2][6]
+
+***
+
+These criteria ensure the **core functionalities** of automated response, escalation, data use, omnichannel consistency, and auditable records are addressed by the Service Agent platform.[1][3][4]
+
+[1](https://www.cxtoday.com/crm/what-is-agentforce-and-how-does-it-work-the-ultimate-guide/)
+[2](https://www.mavlers.com/blog/agentforce-in-salesforce/)
+[3](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/images/56042588/2bef55c9-4dae-4d8d-90a6-00fe0653d79c/image.jpg)
+[4](https://crm-masters.com/how-does-agentforce-service-agent-help-in-customer-service/)
+[5](https://magicfuse.co/blog/salesforce-agentforce-automation)
+[6](https://www.apexhours.com/salesforce-agentforce/)
 
 
 
 
-IF(ISBLANK(outDuplicateList), TT_DupLine, outDuplicateList & BR() & TT_DupLine)
 
+++++++++++++++++++++
+Here is a user story and associated details in the format requested:
 
-IF(ISBLANK({!outDuplicateList}),
-   {!TT_DupLine},
-   {!outDuplicateList} & BR() & {!TT_DupLine}
-)
+***
 
-===========
-IF(
-   ISBLANK({!outDuplicateList}),
-   {!TTDupLine},
-   {!outDuplicateList} & BR() & {!TTDupLine}
-)
+### User Story
+As a service agent or support engineer, I want to use the Agentforce Service Agent so that I can efficiently resolve customer inquiries, automate routine support tasks, and improve customer satisfaction through AI-powered assistance.[1][2]
+
+### Acceptance Criteria
+- Agentforce Service Agent must be accessible from the designated Salesforce app.
+- The agent should autonomously respond to common customer queries and route complex issues to live agents.
+- Service agent activity must be logged and auditable in the system.
+- Only users with required licenses and permissions can create, configure, or monitor the agent.
+- Test scenarios should verify both successful autonomous and escalation workflows.[3][4]
+
+### License/Permissions Needed
+- Salesforce Service Cloud license with Agentforce add-on enabled.
+- Agentforce Admin or equivalent permission set assigned to tester for configuration and monitoring.
+- Access to the data cloud and permissions to view/edit cases and knowledge articles.[4][5][6]
+
+### App to Use for Testing
+- Test the Agentforce Service Agent using the Salesforce Service Console (Lightning Experience).
+- Alternatively, use the Agentforce embedded web widget (if available for self-service portal testing).[2][4]
+
+### Use Cases to Test
+- Automated resolution of common FAQs (password reset, order status inquiry).
+- Escalation of complex or high-priority cases to a human agent.
+- Proactive messaging based on customer account events (e.g., subscription renewal reminder).
+- Multi-channel inquiry handling: website live chat, email, and social channel support.
+- Audit log generation for agent interactions.[6][2]
+
+***
+
+After completing these tasks, the item can be reassigned as instructed.
+
+[1](https://www.cxtoday.com/crm/what-is-agentforce-and-how-does-it-work-the-ultimate-guide/)
+[2](https://crm-masters.com/how-does-agentforce-service-agent-help-in-customer-service/)
+[3](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/images/56042588/2bef55c9-4dae-4d8d-90a6-00fe0653d79c/image.jpg?AWSAccessKeyId=ASIA2F3EMEYE2ER3GWSV&Signature=7bJLVvKGmkU5qgNuSU5ZC%2FF%2FV2c%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEAwaCXVzLWVhc3QtMSJHMEUCIFeAHekrTrlSPIptrfsm0Sz9dzvRpEv8eX1%2B3PStOh8%2BAiEAolDZloAq1NkSC%2BHLbYMnUOxjdAFC%2BvqYkfdt6rVABcIq8QQIZRABGgw2OTk3NTMzMDk3MDUiDHkjrIzkxOdGJQTHmirOBP9j5sCY%2BgEwvZs2hEMslGNHjtP3qiFk1tdMAvld1oavW6YDi5ojlRn8ZUvDISWJ4YouuwYMf34OniH3PL%2BpieIhbIxJLMPDmGbRpBdzS9I%2Firao6ldMjPJaPQGfe4rhj7Xu3q2VqFEOdkXd11TSNtuZt09of1xdsyhIVHsKSgP9WMxeTyWffaJ1DbsCD%2BZHB75UW5O4xsH3IF0FdRrVOm2HIG1Sg2zyt%2F09D4fsTNBjdqjC%2FQqzwk02nOZFv59mdO3R2rR6uuuU5TexsSSIkOIrIfHc0SUdx6FMB%2B%2BfNiv3M5TxCW5mFmxeUyOcGKlIdsLjHW0dwzY4%2FIt5KIF%2B7sN%2FYSEojmkNmTdZnvjMuTYk1TVngq0K2EN%2BNwVPgAUCEAvF9%2FoG%2BW5SMYgtaEyg4h%2FTTYiHR9AblckYux1408FzVsG0jyJWez7Wozr5QxMIwwqFPRysRBcYSbbZEgxMQy0mPRFiaY16ai4wRyp8Y2acu2WW796%2BV%2FiOfwUireJjUDq7Wf6r4f%2F%2FXOXuj2pfKaiBDddRDMWcyZQDqlbXs9ST5gkYuAXe67idk1frOgi01fRULcQbeekP5ppCQJ6UN7deVw%2F9rL%2F4x0zLSrihf%2FldICywpuNulyNoW%2F3x0ysd5QIb9fdpWFwU0v5vVbSggscR%2B%2F%2BT0JXxSSmdQu8xNhqJqnBhWL%2FQllB3FmJ%2FXmHo33sHx6Pu32xge2zsyBStcc6SpAmgtdWKVn50zItbRedUcCOmU64Ab%2BCapRkCspaD3Mf3kbWDt2o5Hzu%2FTHcOMJ%2FzssUGOpoBL9rxln0DmvtcPg4%2BLG6Siney251zd9A3SUI9Nm1ROQdkCwnkKJY8iMuq2mHmF7U5QDUNOCSP8rWCgfAT%2F9qLaRw%2BbYfWGC9aYlUx1LolwRCSFp6EJ6r%2Bj6Vfdu7Kh5QYHDWjzpZo8YfkHYav9entBq4oB%2FeI4bX326rtgRLQu8fWxMMv2u9A5scN%2BoF8B4UyQWcwue7U6oDmcA%3D%3D&Expires=1756150869)
+[4](https://www.apexhours.com/salesforce-agentforce/)
+[5](https://tractioncomplete.com/articles/what-is-agentforce/)
+[6](https://www.mavlers.com/blog/agentforce-in-salesforce/)

@@ -1,2 +1,7 @@
 - Claim {!curDup.Claim_Number__c} – ${!curDup.Billed_Amount__c}
-  ({!curDup.Provider__c}, {!curDup.Service_Date__c}, {!curDup.Procedure_Code__c})
+  ({!curDup.Provider__c}, {!curDup.Service_Date__c}, {!curDup.Procedure_Code__c})/
+
+
+
+
+IF(ISBLANK(outDuplicateList), TT_DupLine, outDuplicateList & BR() & TT_DupLine)

@@ -1,0 +1,62 @@
+Lessons Learned – Claim Insurance POC (Agentforce)
+
+## 1. **Agentforce Responses are Highly Sensitive to Data Context**
+
+* I noticed that when a Claim ID didn’t exist, the LLM sometimes tried to “be helpful” and fabricated claim details.
+* Fix: I explicitly passed *null outputs* from the Flow to the prompt template, forcing the agent to only respond with “no claim found” instead of guessing.
+* Lesson: **Always design for empty/missing data states** in Agentforce, otherwise the agent fills the gap with hallucination.
+
+## 2. **Prompt Variables Work Better Than Free Text**
+
+* At first, I hardcoded instructions like “Explain denial code CO-50.” The agent often gave inconsistent answers.
+* When I switched to using `{DenialCode.Description__c}` from the object as a variable, responses became stable and repeatable.
+* Lesson: **Direct grounding via variables > descriptive instructions.**
+
+## 3. **YAML Formatting Impacts Consistency**
+
+* Even with the same data, small YAML changes produced different results. For example,
+
+  * “Include claim status in plain English” gave varied tones,
+  * while “Format claim status exactly as: ‘Claim Status: {Status\_\_c}’” locked down output.
+* Lesson: **YAML instructions act like UX design—precision drives user trust.**
+
+## 4. **Denial Codes Are a Stress Test for Agentforce**
+
+* Denial codes like *CO-50* or *PR-204* are short, cryptic, and often overlap in meaning.
+* I learned that Agentforce will sometimes “merge” them if not guided correctly.
+* Fix: Built a mapping object (`Denial_Code__c`) and fed the agent structured lookup results instead of asking it to “explain.”
+* Lesson: **Agentforce should never be the source of truth—it should translate truth.**
+
+## 5. **Escalations Need Context-Rich Handoff**
+
+* Simply creating a Case wasn’t enough — support agents need claim number, denial reason, and user email in one package.
+* I added Flow outputs `OutCaseNumber` and `OutCaseId` back into the conversation so the member knew their escalation reference.
+* Lesson: **Agentforce should close the loop both ways — not just log cases, but surface IDs back to the end user.**
+
+## 6. **Fallback Prompts Work Best When Branded as Help, Not Failure**
+
+* Early versions said “I cannot find your claim.” Users felt stuck.
+* I reframed fallbacks as: *“I couldn’t locate that claim. Do you want me to connect you with Support or try a different ID?”*
+* Lesson: **Fallbacks in Agentforce should feel like options, not dead ends.**
+
+## 7. **Agentforce Testing Requires Edge Cases, Not Just Happy Paths**
+
+* Testing with “valid claim ID” always looked smooth. But with:
+
+  * Typo in claim ID,
+  * Multiple claims per member,
+  * Denial with missing description,
+    the assistant broke.
+* Lesson: **Agentforce demos look magical on happy paths — real learning comes from breaking it.**
+
+## 8. **Storytelling Made Technical Builds Click**
+
+* Saying “Flow + Prompt” didn’t resonate with stakeholders.
+* Framing it as: *“Michael Brown enters a claim number. The agent finds his claim, explains CO-50 in plain English, and escalates with a Case ID when needed”* made the value clear.
+* Lesson: **Agentforce adoption depends as much on narrative design as technical design.**
+
+---
+
+✅ This version focuses on **specific insights you discovered while building** (empty states, denial code mapping, YAML quirks, escalation loopback).
+
+Would you like me to turn this into a **polished stakeholder-facing document** (structured, formal) or keep it as a **developer reflection note** (casual, first-person)?

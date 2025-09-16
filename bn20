@@ -1,0 +1,8 @@
+Hi Todd,
+
+I wanted to give you an update on the Experience Cloud issue. I went through the setup steps and later double-checked from my personal system as well — the 500 error is still showing up in the console. Since it’s happening consistently, I thought it would be good to get your input before I take the next step. Do you think I should go ahead and raise a ticket with Salesforce Support, or would you prefer I try any other checks first?
+
+Also, I wanted to confirm on the agent side — is the expectation that the agent itself is working fine as is, and I should just migrate it? Or should I add the new topics with the fields provided to fetch the info? I’ve created some test data in Data Cloud and can have the agent talk with it if that’s what you’d like.
+
+Best,
+Prasanna

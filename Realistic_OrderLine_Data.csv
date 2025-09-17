@@ -1,0 +1,11 @@
+OrderRefNumber,OrderCreateDate,OrderPODate,OrderStatus,Quantity,Revenue,PartNumber,PartDescription,Modality,Vendor,OEM,CustomerID,CustomerName,ParentCustomerID,ParentCustomerName,Requestor,SalesRep
+ORD-1001,2025-01-05,2025-02-01,In Progress,7,1713,PN-581,Imaging Coil,Ultrasound,Siemens Healthineers,Siemens,CUST-101,Mercy Health,PCUST-50,Community Health Systems,Sarah Brown,Rep 1
+ORD-1002,2025-01-10,2025-02-07,Cancelled,13,2813,PN-968,Imaging Coil,PET,Canon Medical,Philips,CUST-102,St. Mary Hospital,PCUST-51,Trinity Health,James Wilson,Rep 2
+ORD-1003,2025-01-15,2025-02-13,In Progress,5,3517,PN-637,Control Unit,X-Ray,Mindray,Philips,CUST-103,Stanford Health,PCUST-52,HCA Healthcare,Emily Smith,Rep 3
+ORD-1004,2025-01-20,2025-02-19,In Progress,5,2917,PN-799,Detector Panel,CT,Mindray,Canon,CUST-104,NYU Langone,PCUST-53,Sutter Health,David Davis,Rep 4
+ORD-1005,2025-01-25,2025-02-25,Pending,4,1586,PN-378,Detector Panel,Ultrasound,Siemens Healthineers,Canon,CUST-105,Cedars-Sinai,PCUST-54,United Health Group,John Johnson,Rep 5
+ORD-1006,2025-01-30,2025-03-03,Cancelled,15,1838,PN-531,Power Supply,CT,Canon Medical,Canon,CUST-106,Mayo Clinic,PCUST-55,Providence Health,Laura Garcia,Rep 6
+ORD-1007,2025-02-04,2025-03-09,In Progress,21,3251,PN-188,Detector Panel,Ultrasound,Mindray,GE,CUST-107,Cleveland Clinic,PCUST-56,Tenet Healthcare,Sophia Miller,Rep 7
+ORD-1008,2025-02-09,2025-03-15,In Progress,15,682,PN-611,Software License,X-Ray,Canon Medical,Mindray,CUST-108,Houston Methodist,PCUST-57,Partners Healthcare,Michael Jones,Rep 8
+ORD-1009,2025-02-14,2025-03-21,In Progress,8,4491,PN-711,Software License,X-Ray,GE Healthcare,Mindray,CUST-109,Mass General,PCUST-58,Kaiser Permanente,Anna Williams,Rep 9
+ORD-1010,2025-02-19,2025-03-27,Completed,2,911,PN-817,Imaging Coil,Ultrasound,Siemens Healthineers,Siemens,CUST-110,Johns Hopkins,PCUST-59,Ascension Health,Robert Lopez,Rep 10
